@@ -1,0 +1,50 @@
+{
+  "environment": "MiniGrid-LavaCrossingS9N1-v0",
+  "seed": 19,
+  "random_episodes": 300,
+  "expert_episodes": 80,
+  "successful_expert_episodes": 80,
+  "expert_data_source": "shortest safe planner; model receives only resulting RGB frames and actions",
+  "random_sequences": 7987,
+  "expert_sequences_after_repeat": 4440,
+  "replay_size": 12427,
+  "updates_requested": 3000,
+  "completed_updates": 3000,
+  "context_length": 4,
+  "horizons": [
+    1,
+    2,
+    4
+  ],
+  "color_augmentation": true,
+  "channel_permutation_invariant": true,
+  "consistency_weight": 2.0,
+  "latent_shape": [
+    8,
+    4,
+    4
+  ],
+  "feature_size": 128,
+  "parameters": {
+    "context_encoder": 21400,
+    "predictor": 7008,
+    "total": 28408
+  },
+  "initial_standard_cyclic_invariance": {
+    "mean_cosine": 0.9999999999999927,
+    "mean_l2": 1.2656756421029828e-07,
+    "max_l2": 1.9303057573053976e-07
+  },
+  "final_standard_cyclic_invariance": {
+    "mean_cosine": 0.9999999999999313,
+    "mean_l2": 3.549115857162926e-07,
+    "max_l2": 6.20763395943284e-07
+  },
+  "latest_metrics": {
+    "loss": 0.0007740232977084816,
+    "prediction_loss": 0.0007738525164313614,
+    "variance_loss": 1.7080164980143309e-06,
+    "consistency_loss": 0.0
+  },
+  "checkpoint": "C:\\Users\\nicho\\Documents\\zimablue\\artifacts\\jepa\\temporal-rgb-s9n1-improved.pt"
+}

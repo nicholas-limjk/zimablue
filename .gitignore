@@ -1,0 +1,27 @@
+.env
+.env.*
+!.env.example
+
+.venv/
+.uv-cache/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Local/generated research inputs and outputs.
+arc_agi_source/
+generated_skills/
+
+# Keep the compact, reproducible JEPA result bundle; ignore scratch runs.
+artifacts/*
+!artifacts/jepa/
+artifacts/jepa/*
+!artifacts/jepa/temporal-jepa-color-success-seed52.mp4
+!artifacts/jepa/temporal-rgb-s9n1-improved-training.json
+!artifacts/jepa/temporal-improved-neat-seed19-report.json
+!artifacts/jepa/temporal-rgb-s9n1-improved.pt
+!artifacts/jepa/temporal-improved-neat-seed19-winner.pkl
+!artifacts/jepa/temporal-jepa-seed39-winner.pkl
+!artifacts/jepa/temporal-rgb-s9n1-fresh.pt

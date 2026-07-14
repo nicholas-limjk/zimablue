@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zima Blue Toy Agent</title>
+    <link rel="stylesheet" href="/public/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="stage" aria-label="Target sandbox">
+        <div class="world">
+          <div class="grid-world" id="gridWorld"></div>
+        </div>
+        <div class="status-strip">
+          <div>
+            <span class="metric-label">Target</span>
+            <strong id="fruitMetric">0/1</strong>
+          </div>
+          <div>
+            <span class="metric-label">Agent/Kit</span>
+            <strong id="agentMetric">(0,0)</strong>
+          </div>
+          <div>
+            <span class="metric-label">Time</span>
+            <strong id="stateMetric">Running</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="mind" aria-label="Primitive agent">
+        <div class="agent-core" id="agentCore">
+          <span id="impulse">1</span>
+        </div>
+        <div class="equation">
+          <span>BASE IMPULSE</span>
+          <strong>reach target</strong>
+          <span>targetReached === false</span>
+          <strong id="equationValue">true</strong>
+        </div>
+        <div class="controls">
+          <button id="stepButton" type="button">Step</button>
+          <button id="runButton" type="button">Pause</button>
+          <button id="resetButton" type="button">Reset</button>
+          <button id="clearSkillsButton" type="button">Clear Skills</button>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Behavior program and trace">
+        <section class="realizations" aria-label="Agent realizations">
+          <h2>Realizations</h2>
+          <ul id="realizations"></ul>
+        </section>
+        <div class="program" id="program"></div>
+        <ol class="trace" id="trace"></ol>
+      </section>
+    </main>
+
+    <script type="module" src="/public/app.js"></script>
+  </body>
+</html>

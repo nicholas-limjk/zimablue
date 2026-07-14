@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MiniGrid Viz</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17202a;
+        --muted: #64727f;
+        --panel: #fffdf8;
+        --line: #d9d2c3;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        background: #f4f1e8;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: minmax(520px, 1fr) 360px;
+        gap: 16px;
+        width: min(1180px, calc(100vw - 32px));
+        margin: 16px auto;
+      }
+
+      .stage, .side {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 16px 42px rgba(32, 37, 42, 0.12);
+      }
+
+      .stage {
+        display: grid;
+        place-items: center;
+        padding: 18px;
+        min-height: calc(100vh - 32px);
+      }
+
+      canvas {
+        width: min(100%, 760px);
+        height: auto;
+        image-rendering: pixelated;
+        border: 1px solid #1f2933;
+        border-radius: 6px;
+        background: #111820;
+      }
+
+      .side {
+        align-self: start;
+        padding: 16px;
+      }
+
+      h1 {
+        margin: 0 0 6px;
+        font-size: 20px;
+      }
+
+      .mission {
+        min-height: 44px;
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .metric {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 10px;
+        background: #ffffff;
+      }
+
+      .metric span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .metric strong {
+        display: block;
+        margin-top: 4px;
+        font-size: 18px;
+      }
+
+      .controls {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      button {
+        min-height: 34px;
+        border: 1px solid #b9c4cb;
+        border-radius: 6px;
+        background: #ffffff;
+        color: var(--ink);
+        font: inherit;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      input[type="range"] { width: 100%; }
+
+      ol {
+        max-height: 42vh;
+        margin: 14px 0 0;
+        padding-left: 22px;
+        overflow: auto;
+      }
+
+      li {
+        margin-bottom: 8px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      li.active {
+        color: var(--ink);
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="stage">
+        <canvas id="grid" width="640" height="640"></canvas>
+      </section>
+      <aside class="side">
+        <h1 id="title">MiniGrid</h1>
+        <p class="mission" id="mission"></p>
+        <div class="metrics">
+          <div class="metric"><span>Step</span><strong id="step">0</strong></div>
+          <div class="metric"><span>Status</span><strong id="status">loading</strong></div>
+          <div class="metric"><span>Source</span><strong id="source">-</strong></div>
+          <div class="metric"><span>Action</span><strong id="action">-</strong></div>
+        </div>
+        <div class="controls">
+          <button id="play" type="button">Pause</button>
+          <button id="prev" type="button">Prev</button>
+          <button id="next" type="button">Next</button>
+        </div>
+        <input id="scrub" type="range" min="0" max="0" value="0">
+        <ol id="trace"></ol>
+      </aside>
+    </main>
+    <script>
+      const palette = {
+        unseen: "#111820",
+        empty: "#f7f5ee",
+        wall: "#59636c",
+        floor: "#f7f5ee",
+        door: "#a56b34",
+        key: "#f2c94c",
+        ball: "#4ea3f1",
+        box: "#a970d6",
+        goal: "#48a868",
+        lava: "#d95832",
+        agent: "#e84b4b"
+      };
+
+      const colorByIdx = {
+        0: "#d95832",
+        1: "#48a868",
+        2: "#4ea3f1",
+        3: "#8e44ad",
+        4: "#f2c94c",
+        5: "#9aa3aa"
+      };
+
+      const canvas = document.querySelector("#grid");
+      const ctx = canvas.getContext("2d");
+      let data;
+      let frameIndex = 0;
+      let playing = true;
+
+      fetch("/public/minigrid-viz-data.json")
+        .then((response) => response.json())
+        .then((payload) => {
+          data = payload;
+          document.querySelector("#title").textContent = payload.env_id;
+          document.querySelector("#scrub").max = String(payload.frames.length - 1);
+          render();
+          setInterval(() => {
+            if (!playing || !data) return;
+            frameIndex = (frameIndex + 1) % data.frames.length;
+            render();
+          }, 520);
+        });
+
+      document.querySelector("#play").addEventListener("click", () => {
+        playing = !playing;
+        document.querySelector("#play").textContent = playing ? "Pause" : "Play";
+      });
+      document.querySelector("#prev").addEventListener("click", () => {
+        frameIndex = Math.max(0, frameIndex - 1);
+        render();
+      });
+      document.querySelector("#next").addEventListener("click", () => {
+        frameIndex = Math.min(data.frames.length - 1, frameIndex + 1);
+        render();
+      });
+      document.querySelector("#scrub").addEventListener("input", (event) => {
+        frameIndex = Number(event.target.value);
+        render();
+      });
+
+      function render() {
+        const frame = data.frames[frameIndex];
+        const objectByIdx = invert(data.object_to_idx);
+        const image = frame.full_image || frame.image;
+        const visibleMask = frame.visible_mask;
+        const cols = image.length;
+        const rows = image[0].length;
+        const cell = Math.floor(Math.min(canvas.width / cols, canvas.height / rows));
+        const ox = Math.floor((canvas.width - cols * cell) / 2);
+        const oy = Math.floor((canvas.height - rows * cell) / 2);
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#111820";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        for (let y = 0; y < rows; y += 1) {
+          for (let x = 0; x < cols; x += 1) {
+            const [objectIdx, colorIdx, state] = image[x][y];
+            const object = objectByIdx[objectIdx] || "empty";
+            const visible = !visibleMask || visibleMask[x]?.[y];
+            drawCell(ox + x * cell, oy + y * cell, cell, object, colorIdx, state, visible);
+          }
+        }
+        if (frame.agent_pos) {
+          drawCell(
+            ox + frame.agent_pos[0] * cell,
+            oy + frame.agent_pos[1] * cell,
+            cell,
+            "agent",
+            0,
+            frame.agent_dir ?? frame.direction,
+            true
+          );
+        }
+
+        document.querySelector("#mission").textContent = frame.mission;
+        document.querySelector("#step").textContent = `${frame.step}/${data.frames.length - 1}`;
+        document.querySelector("#status").textContent = frame.status;
+        document.querySelector("#source").textContent = frame.source;
+        document.querySelector("#action").textContent = frame.action ?? "-";
+        document.querySelector("#scrub").value = String(frameIndex);
+        renderTrace();
+      }
+
+      function drawCell(x, y, size, object, colorIdx, state, visible = true) {
+        ctx.save();
+        ctx.globalAlpha = visible ? 1 : 0.24;
+        ctx.fillStyle = palette[object] || palette.empty;
+        ctx.fillRect(x, y, size, size);
+        ctx.strokeStyle = "rgba(20, 28, 36, 0.24)";
+        ctx.strokeRect(x + 0.5, y + 0.5, size - 1, size - 1);
+
+        if (object === "door") {
+          ctx.fillStyle = state === 0 ? "#c58b50" : "#5b3a20";
+          ctx.fillRect(x + size * 0.22, y + size * 0.12, size * 0.56, size * 0.76);
+        }
+
+        if (object === "key") {
+          ctx.fillStyle = colorByIdx[colorIdx] || palette.key;
+          ctx.beginPath();
+          ctx.arc(x + size * 0.42, y + size * 0.42, size * 0.16, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillRect(x + size * 0.52, y + size * 0.39, size * 0.28, size * 0.08);
+        }
+
+        if (object === "goal") {
+          ctx.fillStyle = "#ffffff";
+          ctx.beginPath();
+          ctx.arc(x + size / 2, y + size / 2, size * 0.18, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        if (object === "agent") {
+          const direction = state;
+          ctx.fillStyle = palette.agent;
+          ctx.beginPath();
+          const points = trianglePoints(x, y, size, direction);
+          ctx.moveTo(points[0][0], points[0][1]);
+          ctx.lineTo(points[1][0], points[1][1]);
+          ctx.lineTo(points[2][0], points[2][1]);
+          ctx.closePath();
+          ctx.fill();
+        }
+        ctx.restore();
+
+        if (!visible) {
+          ctx.fillStyle = "rgba(17, 24, 32, 0.16)";
+          ctx.fillRect(x, y, size, size);
+        }
+      }
+
+      function trianglePoints(x, y, size, direction) {
+        const pad = size * 0.2;
+        const cx = x + size / 2;
+        const cy = y + size / 2;
+        if (direction === 1) return [[cx, y + size - pad], [x + pad, y + pad], [x + size - pad, y + pad]];
+        if (direction === 2) return [[x + pad, cy], [x + size - pad, y + pad], [x + size - pad, y + size - pad]];
+        if (direction === 3) return [[cx, y + pad], [x + pad, y + size - pad], [x + size - pad, y + size - pad]];
+        return [[x + size - pad, cy], [x + pad, y + pad], [x + pad, y + size - pad]];
+      }
+
+      function renderTrace() {
+        const trace = document.querySelector("#trace");
+        trace.innerHTML = "";
+        data.frames.slice(Math.max(0, frameIndex - 10), frameIndex + 1).forEach((frame, offset) => {
+          const li = document.createElement("li");
+          if (Math.max(0, frameIndex - 10) + offset === frameIndex) li.className = "active";
+          const note = frame.note ? ` ${frame.note}` : "";
+          li.textContent = `t=${frame.step} ${frame.source} ${frame.action ?? ""} r=${frame.reward.toFixed(2)} ${frame.status}${note}`;
+          trace.append(li);
+        });
+      }
+
+      function invert(object) {
+        return Object.fromEntries(Object.entries(object).map(([key, value]) => [value, key]));
+      }
+    </script>
+  </body>
+</html>

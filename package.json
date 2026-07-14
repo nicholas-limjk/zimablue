@@ -1,0 +1,17 @@
+{
+  "name": "zimablue-toy-agent",
+  "version": "0.1.0",
+  "description": "A toy Zima Blue-inspired agent framework where a tiny classifier gains power through capabilities.",
+  "type": "module",
+  "scripts": {
+    "demo": "node src/demo.js",
+    "demo:agentic": "node src/agentic-demo.js",
+    "demo:learning": "node src/learning-lab-demo.js",
+    "demo:minigrid": "node src/minigrid-demo.js",
+    "visualize": "node server.js",
+    "test": "node --test test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

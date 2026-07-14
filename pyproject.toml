@@ -1,0 +1,37 @@
+[project]
+name = "zimablue-minigrid"
+version = "0.1.0"
+description = "Python-first Zima Blue agent harness for Farama MiniGrid environments."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "gymnasium>=0.29",
+  "minigrid>=3.1.0",
+  "pillow>=12.2.0",
+  "imageio>=2.37.3",
+  "imageio-ffmpeg>=0.6.0",
+  "torch>=2.13.0",
+  "neat-python>=2.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+zima-minigrid = "zima_py.run_minigrid:main"
+zima-minigrid-viz = "zima_py.export_minigrid_viz:main"
+zima-jepa-train = "zima_py.train_jepa_minigrid:main"
+zima-minimal-jepa-train = "zima_py.train_minimal_jepa:main"
+zima-jepa-neat = "zima_py.evolve_jepa_neat:main"
+zima-jepa-neat-eval = "zima_py.evaluate_jepa_neat:main"
+zima-rgb-jepa-train = "zima_py.train_rgb_jepa:main"
+zima-temporal-rgb-jepa-train = "zima_py.train_temporal_rgb_jepa:main"
+zima-rgb-neat = "zima_py.evolve_rgb_neat:main"
+zima-rgb-neat-eval = "zima_py.evaluate_rgb_neat:main"
+zima-rgb-terrain-viz = "zima_py.visualize_rgb_terrain:main"
+zima-rgb-color-video = "zima_py.visualize_color_success:main"
+
+[tool.setuptools.packages.find]
+include = ["zima_py*"]
