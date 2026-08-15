@@ -1,0 +1,1260 @@
+{
+  "environment": "MiniGrid-LavaCrossingS9N1-v0",
+  "input_mode": "temporal-jepa",
+  "semantic_inputs": false,
+  "persistent_map": false,
+  "train_rgb_style": "standard",
+  "holdout_rgb_style": "standard",
+  "visual_feature_count": 128,
+  "controller_input_count": 216,
+  "controller": "recurrent",
+  "oracle_action_hint": false,
+  "belief_checkpoint": "C:\\Users\\nicho\\Documents\\zimablue\\artifacts\\jepa\\temporal-rgb-s9n1-trm-belief-d6.pt",
+  "belief_feature_count": 80,
+  "active_belief_lexicase": false,
+  "seed": 19,
+  "generations": 20,
+  "population": 30,
+  "training_seed_pool": 50,
+  "cases_per_generation": 5,
+  "case_schedule": [
+    [
+      43,
+      2,
+      33,
+      7,
+      32
+    ],
+    [
+      29,
+      38,
+      25,
+      40,
+      16
+    ],
+    [
+      16,
+      35,
+      48,
+      3,
+      19
+    ],
+    [
+      1,
+      23,
+      6,
+      44,
+      9
+    ],
+    [
+      0,
+      34,
+      36,
+      2,
+      41
+    ],
+    [
+      27,
+      7,
+      46,
+      22,
+      8
+    ],
+    [
+      15,
+      39,
+      49,
+      8,
+      14
+    ],
+    [
+      33,
+      32,
+      14,
+      44,
+      43
+    ],
+    [
+      12,
+      38,
+      2,
+      24,
+      44
+    ],
+    [
+      2,
+      40,
+      16,
+      12,
+      18
+    ],
+    [
+      39,
+      29,
+      40,
+      30,
+      11
+    ],
+    [
+      1,
+      41,
+      39,
+      44,
+      29
+    ],
+    [
+      31,
+      41,
+      30,
+      34,
+      3
+    ],
+    [
+      2,
+      42,
+      9,
+      36,
+      23
+    ],
+    [
+      14,
+      0,
+      21,
+      42,
+      23
+    ],
+    [
+      47,
+      49,
+      37,
+      9,
+      25
+    ],
+    [
+      31,
+      9,
+      37,
+      46,
+      23
+    ],
+    [
+      43,
+      34,
+      20,
+      11,
+      1
+    ],
+    [
+      11,
+      15,
+      16,
+      12,
+      22
+    ],
+    [
+      4,
+      19,
+      43,
+      37,
+      5
+    ]
+  ],
+  "selection": "epsilon_lexicase",
+  "map_elites": true,
+  "map_elites_archive": [
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 6.774900000000001,
+      "generation": 16
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 6.7356,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.151300000000001,
+      "generation": 18
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.1449,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.40085,
+      "generation": 18
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.0571,
+      "generation": 13
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 5,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 1.6239500000000002,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 1.613,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 1.5653000000000001,
+      "generation": 16
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 1.5311,
+      "generation": 7
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 4
+      },
+      "fitness": 1.4270999999999998,
+      "generation": 5
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 1.4859,
+      "generation": 8
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.39549999999999996,
+      "generation": 7
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.094,
+      "generation": 12
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.10250000000000001,
+      "generation": 0
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 1
+      },
+      "fitness": -2.1108499999999997,
+      "generation": 3
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.10874999999999999,
+      "generation": 7
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 4
+      },
+      "fitness": -1.5878,
+      "generation": 8
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 3
+      },
+      "fitness": -1.1020999999999999,
+      "generation": 11
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 2
+      },
+      "fitness": -0.7846,
+      "generation": 3
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 1
+      },
+      "fitness": -1.0253,
+      "generation": 9
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 0
+      },
+      "fitness": -2.43375,
+      "generation": 0
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.1775,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 2
+      },
+      "fitness": -2.14125,
+      "generation": 3
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 1
+      },
+      "fitness": -1.0493000000000001,
+      "generation": 1
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 0
+      },
+      "fitness": -1.00875,
+      "generation": 0
+    }
+  ],
+  "checkpoint": "C:\\Users\\nicho\\Documents\\zimablue\\artifacts\\jepa\\temporal-rgb-s9n1-improved.pt",
+  "context_length": 4,
+  "encoder_parameters": {
+    "context_encoder": 21400,
+    "predictor": 7008,
+    "total": 28408
+  },
+  "winner_source": "archive:(0, 0, 2, 1, 5)",
+  "winner_fitness": 2.7744,
+  "winner_nodes": 7,
+  "winner_connections": 383,
+  "training_evaluation": {
+    "episodes": 10,
+    "solved": 3,
+    "success_rate": 0.3,
+    "mean_solved_steps": 18.0,
+    "runs": [
+      {
+        "seed": 0,
+        "solved": true,
+        "steps": 18,
+        "fitness": 10.182,
+        "unique_observations": 16,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9979694450151478,
+        "belief_entropy_final": 0.9890118171643711,
+        "belief_uncertainty_reduction": 0.008957627850776695,
+        "belief_cumulative_reduction": 0.7434429128065508,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 1,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.998225710794142,
+        "belief_entropy_final": 0.9968984729244755,
+        "belief_uncertainty_reduction": 0.0013272378696664866,
+        "belief_cumulative_reduction": 0.36366460599734873,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 2,
+        "solved": false,
+        "steps": 4,
+        "fitness": -0.974,
+        "unique_observations": 4,
+        "unique_positions": 2,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9979609331985825,
+        "belief_entropy_final": 0.9756281930080994,
+        "belief_uncertainty_reduction": 0.022332740190483036,
+        "belief_cumulative_reduction": 0.3639248895571602,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 3,
+        "solved": false,
+        "steps": 17,
+        "fitness": -0.827,
+        "unique_observations": 16,
+        "unique_positions": 12,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981333628252419,
+        "belief_entropy_final": 0.9875447185968469,
+        "belief_uncertainty_reduction": 0.010588644228395006,
+        "belief_cumulative_reduction": 0.7421952708191436,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 4,
+        "solved": false,
+        "steps": 15,
+        "fitness": -0.855,
+        "unique_observations": 14,
+        "unique_positions": 10,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9980242933741911,
+        "belief_entropy_final": 0.9969100138293342,
+        "belief_uncertainty_reduction": 0.0011142795448568776,
+        "belief_cumulative_reduction": 0.7326837214948118,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 5,
+        "solved": true,
+        "steps": 18,
+        "fitness": 10.187,
+        "unique_observations": 17,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981628425927518,
+        "belief_entropy_final": 0.9884681077574808,
+        "belief_uncertainty_reduction": 0.009694734835270946,
+        "belief_cumulative_reduction": 0.7436575214598455,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 6,
+        "solved": true,
+        "steps": 18,
+        "fitness": 10.182,
+        "unique_observations": 16,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981333628252419,
+        "belief_entropy_final": 0.9894321062038088,
+        "belief_uncertainty_reduction": 0.008701256621433062,
+        "belief_cumulative_reduction": 0.7420519753474429,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 7,
+        "solved": false,
+        "steps": 8,
+        "fitness": -0.918,
+        "unique_observations": 8,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981805527128356,
+        "belief_entropy_final": 0.9875571014281774,
+        "belief_uncertainty_reduction": 0.010623451284658136,
+        "belief_cumulative_reduction": 0.37309351149402237,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 8,
+        "solved": false,
+        "steps": 13,
+        "fitness": -0.878,
+        "unique_observations": 13,
+        "unique_positions": 8,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.998396653950723,
+        "belief_entropy_final": 0.9756418510074404,
+        "belief_uncertainty_reduction": 0.02275480294328258,
+        "belief_cumulative_reduction": 0.7314021778269167,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 9,
+        "solved": false,
+        "steps": 4,
+        "fitness": -0.974,
+        "unique_observations": 4,
+        "unique_positions": 2,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9979036570715007,
+        "belief_entropy_final": 0.9754618514293586,
+        "belief_uncertainty_reduction": 0.022441805642142154,
+        "belief_cumulative_reduction": 0.3640474018387968,
+        "collected": false,
+        "opened_door": false
+      }
+    ]
+  },
+  "standard_holdout_evaluation": {
+    "episodes": 20,
+    "solved": 3,
+    "success_rate": 0.15,
+    "mean_solved_steps": 18.0,
+    "runs": [
+      {
+        "seed": 50,
+        "solved": false,
+        "steps": 17,
+        "fitness": -0.827,
+        "unique_observations": 16,
+        "unique_positions": 12,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982950757845502,
+        "belief_entropy_final": 0.9876020011215576,
+        "belief_uncertainty_reduction": 0.01069307466299263,
+        "belief_cumulative_reduction": 0.7422758187197217,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 51,
+        "solved": false,
+        "steps": 15,
+        "fitness": -0.85,
+        "unique_observations": 15,
+        "unique_positions": 10,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982864930989047,
+        "belief_entropy_final": 0.996914448546671,
+        "belief_uncertainty_reduction": 0.00137204455223372,
+        "belief_cumulative_reduction": 0.7325099306659101,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 52,
+        "solved": true,
+        "steps": 18,
+        "fitness": 10.187,
+        "unique_observations": 17,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981982799244558,
+        "belief_entropy_final": 0.9876638057968834,
+        "belief_uncertainty_reduction": 0.010534474127572357,
+        "belief_cumulative_reduction": 0.742754708152156,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 53,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.998225710794142,
+        "belief_entropy_final": 0.9968984729244755,
+        "belief_uncertainty_reduction": 0.0013272378696664866,
+        "belief_cumulative_reduction": 0.36366460599734873,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 54,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982197587294889,
+        "belief_entropy_final": 0.9969034101478929,
+        "belief_uncertainty_reduction": 0.0013163485815960163,
+        "belief_cumulative_reduction": 0.3635833604382691,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 55,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982197587294889,
+        "belief_entropy_final": 0.9969034101478929,
+        "belief_uncertainty_reduction": 0.0013163485815960163,
+        "belief_cumulative_reduction": 0.3635833604382691,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 56,
+        "solved": false,
+        "steps": 13,
+        "fitness": -0.878,
+        "unique_observations": 13,
+        "unique_positions": 8,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9983944219461413,
+        "belief_entropy_final": 0.9756101023588053,
+        "belief_uncertainty_reduction": 0.022784319587335955,
+        "belief_cumulative_reduction": 0.7319079408497087,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 57,
+        "solved": false,
+        "steps": 15,
+        "fitness": -0.85,
+        "unique_observations": 15,
+        "unique_positions": 10,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982853702969555,
+        "belief_entropy_final": 0.9969177403118417,
+        "belief_uncertainty_reduction": 0.0013676299851138607,
+        "belief_cumulative_reduction": 0.7328819431400546,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 58,
+        "solved": false,
+        "steps": 17,
+        "fitness": -0.827,
+        "unique_observations": 16,
+        "unique_positions": 12,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982950757845502,
+        "belief_entropy_final": 0.9876020011215576,
+        "belief_uncertainty_reduction": 0.01069307466299263,
+        "belief_cumulative_reduction": 0.7422758187197217,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 59,
+        "solved": false,
+        "steps": 17,
+        "fitness": -0.827,
+        "unique_observations": 16,
+        "unique_positions": 12,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9979199938013739,
+        "belief_entropy_final": 0.9876020011215576,
+        "belief_uncertainty_reduction": 0.010317992679816257,
+        "belief_cumulative_reduction": 0.7423618407998849,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 60,
+        "solved": true,
+        "steps": 18,
+        "fitness": 10.187,
+        "unique_observations": 17,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981982799244558,
+        "belief_entropy_final": 0.9876638057968834,
+        "belief_uncertainty_reduction": 0.010534474127572357,
+        "belief_cumulative_reduction": 0.742754708152156,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 61,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982197587294889,
+        "belief_entropy_final": 0.9969034101478929,
+        "belief_uncertainty_reduction": 0.0013163485815960163,
+        "belief_cumulative_reduction": 0.3635833604382691,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 62,
+        "solved": false,
+        "steps": 13,
+        "fitness": -0.878,
+        "unique_observations": 13,
+        "unique_positions": 8,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.998396653950723,
+        "belief_entropy_final": 0.9756418510074404,
+        "belief_uncertainty_reduction": 0.02275480294328258,
+        "belief_cumulative_reduction": 0.7314021778269167,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 63,
+        "solved": false,
+        "steps": 4,
+        "fitness": -0.974,
+        "unique_observations": 4,
+        "unique_positions": 2,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9980322157238769,
+        "belief_entropy_final": 0.9753477101969786,
+        "belief_uncertainty_reduction": 0.02268450552689827,
+        "belief_cumulative_reduction": 0.3646864504229371,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 64,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981979678696382,
+        "belief_entropy_final": 0.9969154956357668,
+        "belief_uncertainty_reduction": 0.0012824722338714567,
+        "belief_cumulative_reduction": 0.3635378560983856,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 65,
+        "solved": true,
+        "steps": 18,
+        "fitness": 10.182,
+        "unique_observations": 16,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981333628252419,
+        "belief_entropy_final": 0.9894321062038088,
+        "belief_uncertainty_reduction": 0.008701256621433062,
+        "belief_cumulative_reduction": 0.7420519753474429,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 66,
+        "solved": false,
+        "steps": 15,
+        "fitness": -0.85,
+        "unique_observations": 15,
+        "unique_positions": 10,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981628425927518,
+        "belief_entropy_final": 0.9969671722588048,
+        "belief_uncertainty_reduction": 0.0011956703339469632,
+        "belief_cumulative_reduction": 0.7327580772142376,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 67,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981979678696382,
+        "belief_entropy_final": 0.9969154956357668,
+        "belief_uncertainty_reduction": 0.0012824722338714567,
+        "belief_cumulative_reduction": 0.3635378560983856,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 68,
+        "solved": false,
+        "steps": 8,
+        "fitness": -0.918,
+        "unique_observations": 8,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981805527128356,
+        "belief_entropy_final": 0.9875571014281774,
+        "belief_uncertainty_reduction": 0.010623451284658136,
+        "belief_cumulative_reduction": 0.37309351149402237,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 69,
+        "solved": false,
+        "steps": 15,
+        "fitness": -0.85,
+        "unique_observations": 15,
+        "unique_positions": 10,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982853702969555,
+        "belief_entropy_final": 0.9969177403118417,
+        "belief_uncertainty_reduction": 0.0013676299851138607,
+        "belief_cumulative_reduction": 0.7328819431400546,
+        "collected": false,
+        "opened_door": false
+      }
+    ]
+  },
+  "holdout_evaluation": {
+    "episodes": 20,
+    "solved": 3,
+    "success_rate": 0.15,
+    "mean_solved_steps": 18.0,
+    "runs": [
+      {
+        "seed": 50,
+        "solved": false,
+        "steps": 17,
+        "fitness": -0.827,
+        "unique_observations": 16,
+        "unique_positions": 12,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982950757845502,
+        "belief_entropy_final": 0.9876020011215576,
+        "belief_uncertainty_reduction": 0.01069307466299263,
+        "belief_cumulative_reduction": 0.7422758187197217,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 51,
+        "solved": false,
+        "steps": 15,
+        "fitness": -0.85,
+        "unique_observations": 15,
+        "unique_positions": 10,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982864930989047,
+        "belief_entropy_final": 0.996914448546671,
+        "belief_uncertainty_reduction": 0.00137204455223372,
+        "belief_cumulative_reduction": 0.7325099306659101,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 52,
+        "solved": true,
+        "steps": 18,
+        "fitness": 10.187,
+        "unique_observations": 17,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981982799244558,
+        "belief_entropy_final": 0.9876638057968834,
+        "belief_uncertainty_reduction": 0.010534474127572357,
+        "belief_cumulative_reduction": 0.742754708152156,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 53,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.998225710794142,
+        "belief_entropy_final": 0.9968984729244755,
+        "belief_uncertainty_reduction": 0.0013272378696664866,
+        "belief_cumulative_reduction": 0.36366460599734873,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 54,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982197587294889,
+        "belief_entropy_final": 0.9969034101478929,
+        "belief_uncertainty_reduction": 0.0013163485815960163,
+        "belief_cumulative_reduction": 0.3635833604382691,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 55,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982197587294889,
+        "belief_entropy_final": 0.9969034101478929,
+        "belief_uncertainty_reduction": 0.0013163485815960163,
+        "belief_cumulative_reduction": 0.3635833604382691,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 56,
+        "solved": false,
+        "steps": 13,
+        "fitness": -0.878,
+        "unique_observations": 13,
+        "unique_positions": 8,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9983944219461413,
+        "belief_entropy_final": 0.9756101023588053,
+        "belief_uncertainty_reduction": 0.022784319587335955,
+        "belief_cumulative_reduction": 0.7319079408497087,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 57,
+        "solved": false,
+        "steps": 15,
+        "fitness": -0.85,
+        "unique_observations": 15,
+        "unique_positions": 10,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982853702969555,
+        "belief_entropy_final": 0.9969177403118417,
+        "belief_uncertainty_reduction": 0.0013676299851138607,
+        "belief_cumulative_reduction": 0.7328819431400546,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 58,
+        "solved": false,
+        "steps": 17,
+        "fitness": -0.827,
+        "unique_observations": 16,
+        "unique_positions": 12,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982950757845502,
+        "belief_entropy_final": 0.9876020011215576,
+        "belief_uncertainty_reduction": 0.01069307466299263,
+        "belief_cumulative_reduction": 0.7422758187197217,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 59,
+        "solved": false,
+        "steps": 17,
+        "fitness": -0.827,
+        "unique_observations": 16,
+        "unique_positions": 12,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9979199938013739,
+        "belief_entropy_final": 0.9876020011215576,
+        "belief_uncertainty_reduction": 0.010317992679816257,
+        "belief_cumulative_reduction": 0.7423618407998849,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 60,
+        "solved": true,
+        "steps": 18,
+        "fitness": 10.187,
+        "unique_observations": 17,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981982799244558,
+        "belief_entropy_final": 0.9876638057968834,
+        "belief_uncertainty_reduction": 0.010534474127572357,
+        "belief_cumulative_reduction": 0.742754708152156,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 61,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982197587294889,
+        "belief_entropy_final": 0.9969034101478929,
+        "belief_uncertainty_reduction": 0.0013163485815960163,
+        "belief_cumulative_reduction": 0.3635833604382691,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 62,
+        "solved": false,
+        "steps": 13,
+        "fitness": -0.878,
+        "unique_observations": 13,
+        "unique_positions": 8,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.998396653950723,
+        "belief_entropy_final": 0.9756418510074404,
+        "belief_uncertainty_reduction": 0.02275480294328258,
+        "belief_cumulative_reduction": 0.7314021778269167,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 63,
+        "solved": false,
+        "steps": 4,
+        "fitness": -0.974,
+        "unique_observations": 4,
+        "unique_positions": 2,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9980322157238769,
+        "belief_entropy_final": 0.9753477101969786,
+        "belief_uncertainty_reduction": 0.02268450552689827,
+        "belief_cumulative_reduction": 0.3646864504229371,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 64,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981979678696382,
+        "belief_entropy_final": 0.9969154956357668,
+        "belief_uncertainty_reduction": 0.0012824722338714567,
+        "belief_cumulative_reduction": 0.3635378560983856,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 65,
+        "solved": true,
+        "steps": 18,
+        "fitness": 10.182,
+        "unique_observations": 16,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981333628252419,
+        "belief_entropy_final": 0.9894321062038088,
+        "belief_uncertainty_reduction": 0.008701256621433062,
+        "belief_cumulative_reduction": 0.7420519753474429,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 66,
+        "solved": false,
+        "steps": 15,
+        "fitness": -0.85,
+        "unique_observations": 15,
+        "unique_positions": 10,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981628425927518,
+        "belief_entropy_final": 0.9969671722588048,
+        "belief_uncertainty_reduction": 0.0011956703339469632,
+        "belief_cumulative_reduction": 0.7327580772142376,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 67,
+        "solved": false,
+        "steps": 6,
+        "fitness": -0.946,
+        "unique_observations": 6,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981979678696382,
+        "belief_entropy_final": 0.9969154956357668,
+        "belief_uncertainty_reduction": 0.0012824722338714567,
+        "belief_cumulative_reduction": 0.3635378560983856,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 68,
+        "solved": false,
+        "steps": 8,
+        "fitness": -0.918,
+        "unique_observations": 8,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9981805527128356,
+        "belief_entropy_final": 0.9875571014281774,
+        "belief_uncertainty_reduction": 0.010623451284658136,
+        "belief_cumulative_reduction": 0.37309351149402237,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 69,
+        "solved": false,
+        "steps": 15,
+        "fitness": -0.85,
+        "unique_observations": 15,
+        "unique_positions": 10,
+        "blocked_steps": 0,
+        "belief_entropy_initial": 0.9982853702969555,
+        "belief_entropy_final": 0.9969177403118417,
+        "belief_uncertainty_reduction": 0.0013676299851138607,
+        "belief_cumulative_reduction": 0.7328819431400546,
+        "collected": false,
+        "opened_door": false
+      }
+    ]
+  },
+  "fitness_history": [
+    -0.10250000000000001,
+    1.4775,
+    1.5103,
+    4.1281,
+    1.4601000000000002,
+    1.4785,
+    1.4671000000000003,
+    1.56455,
+    1.5114,
+    1.4963000000000002,
+    4.1295,
+    4.065099999999999,
+    4.102,
+    4.0571,
+    4.149299999999999,
+    4.1315,
+    6.774900000000001,
+    6.7356,
+    4.40085,
+    4.1189
+  ],
+  "winner": "C:\\Users\\nicho\\Documents\\zimablue\\artifacts\\jepa\\temporal-trm-belief-d6-neat-seed19-winner.pkl"
+}
