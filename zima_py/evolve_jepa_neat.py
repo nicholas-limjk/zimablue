@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import pickle
 import random
 from pathlib import Path
@@ -368,13 +369,29 @@ def aggregate_layout_fitness(outcomes: list[dict[str, Any]]) -> float:
     return mean_fitness + 0.25 * worst_fitness + 2.0 * success_rate
 
 
-def neat_config_for_inputs(input_count: int, lexicase: bool = False) -> Path:
+def neat_config_for_inputs(
+    input_count: int,
+    lexicase: bool = False,
+    *,
+    feed_forward: bool = False,
+    output_count: int = 7,
+) -> Path:
     template = Path(__file__).with_name("neat_jepa_config.ini").read_text(encoding="utf-8")
     generated = template.replace("num_inputs              = 78", f"num_inputs              = {int(input_count)}")
+    generated = generated.replace("num_outputs             = 7", f"num_outputs             = {int(output_count)}")
+    if feed_forward:
+        generated = generated.replace("feed_forward            = False", "feed_forward            = True")
     if lexicase:
         generated = generated.replace("[DefaultReproduction]", "[LexicaseReproduction]")
     suffix = "_lexicase" if lexicase else ""
-    path = ROOT / "artifacts" / "jepa" / f"neat_config_{int(input_count)}{suffix}.ini"
+    controller_suffix = "_feedforward" if feed_forward else ""
+    output_suffix = "" if output_count == 7 else f"_out{int(output_count)}"
+    # Include the process ID so matched experiments can evolve concurrently
+    # without observing a partially-written shared config file.
+    path = ROOT / "artifacts" / "jepa" / (
+        f"neat_config_{int(input_count)}{suffix}{controller_suffix}{output_suffix}"
+        f"_pid{os.getpid()}.ini"
+    )
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(generated, encoding="utf-8")
     return path

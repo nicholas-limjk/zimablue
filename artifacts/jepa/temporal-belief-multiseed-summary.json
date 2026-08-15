@@ -1,0 +1,38 @@
+{
+  "environment": "MiniGrid-LavaCrossingS9N1-v0",
+  "evolution_seeds": [19, 29, 39],
+  "budget_per_run": {
+    "generations": 20,
+    "population": 30,
+    "training_seed_pool": [0, 49],
+    "cases_per_generation": 5,
+    "holdout_seeds": [50, 69]
+  },
+  "conditions": {
+    "deterministic_belief_v1": {
+      "heldout_solved_by_seed": [3, 3, 3],
+      "solved_layout_seeds_by_run": [[52, 60, 65], [52, 60, 65], [52, 60, 65]],
+      "heldout_solved_total": 9,
+      "heldout_episodes_total": 60,
+      "mean_unique_observations": 17.17,
+      "mean_unique_positions": 8.67
+    },
+    "uncertainty_belief_v2": {
+      "heldout_solved_by_seed": [2, 3, 3],
+      "solved_layout_seeds_by_run": [[53, 59], [52, 60, 65], [52, 60, 65]],
+      "heldout_solved_total": 8,
+      "heldout_episodes_total": 60,
+      "mean_unique_observations": 10.40,
+      "mean_unique_positions": 7.80
+    },
+    "uncertainty_belief_v2_active_lexicase": {
+      "heldout_solved_by_seed": [3, 3, 3],
+      "solved_layout_seeds_by_run": [[52, 60, 65], [52, 60, 65], [52, 60, 65]],
+      "heldout_solved_total": 9,
+      "heldout_episodes_total": 60,
+      "mean_unique_observations": 15.78,
+      "mean_unique_positions": 8.55
+    }
+  },
+  "conclusion": "Active-information lexicase is competitive but does not outperform deterministic belief v1 across these evolution seeds. The learned belief remains the primary bottleneck."
+}

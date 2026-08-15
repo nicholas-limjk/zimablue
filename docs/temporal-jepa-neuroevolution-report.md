@@ -371,6 +371,228 @@ held-out seed 52 under standard RGB and cyclic `RGB→GBR`:
 
 <../artifacts/jepa/temporal-jepa-color-success-seed52.mp4>
 
+### Bottleneck ablation: observation, memory, or search?
+
+Three seed-19 diagnostics held the improved JEPA, fitness, randomized training
+pool, lexicase selection, MAP-Elites archive, and 20-seed holdout fixed.
+
+| Condition | Generations × population | Training | Held-out | Mean solved steps |
+|---|---:|---:|---:|---:|
+| Recurrent baseline | 20 × 30 | 2/10 | 2/20 | 13.0 |
+| Feed-forward controller | 20 × 30 | 2/10 | 1/20 | 16.0 |
+| Recurrent, 3.3× search | 40 × 50 | 2/10 | 2/20 | 13.0 |
+| Recurrent + oracle next-safe-action hint | 20 × 30 | 10/10 | 20/20 | 49.9 |
+
+The feed-forward ablation removes NEAT's recurrent state while retaining the
+four-frame JEPA context. Its one-success decrease indicates that recurrence helps,
+but does not explain most failures. Increasing genome-generations from 600 to
+2,000 produced no held-out improvement, so this search expansion did not address
+the ceiling.
+
+The oracle condition appends a three-value one-hot hint computed by a full-state
+shortest-safe-path planner at every step. This is intentionally much stronger than
+showing the controller a full-grid image. It is not a deployable method or evidence
+that full-grid pixels would yield 20/20. It is a diagnostic upper bound: at the
+matched search budget, NEAT can evolve a controller that generalizes across every
+held-out layout when route-relevant state is explicit. The primary observed gap is
+therefore constructing and retaining route-relevant belief state from partial
+observations, rather than controller size or this range of evolutionary compute.
+
+### Learned recurrent belief head
+
+The first oracle-replacement experiment freezes the improved temporal JEPA and
+trains a separate 64-state GRU belief decoder. Full simulator state is used only to
+form pretraining labels. At control time the GRU receives the 128-value JEPA latent
+and previous action; it never receives the map, pose, goal coordinate, planner, or
+teacher targets.
+
+The supervised targets are:
+
+- shortest-safe next-action distribution;
+- immediate left/right/forward collision risk;
+- normalized safe-path distance, egocentric goal offset, and recent progress; and
+- a barrier-crossing event plus persistent opposite-side belief.
+
+The belief head has 39,564 parameters and exports its 64 recurrent values plus 12
+decoded values, giving NEAT 212 inputs in total. On validation layouts 40–49 it
+reached 43.8% route-action accuracy, 98.8% collision accuracy, 0.127 goal-feature
+MAE, and 92.6% barrier accuracy. Both JEPA and belief weights were then frozen.
+
+| Frozen controller substrate | Training | Held-out standard | Held-out RGB→GBR |
+|---|---:|---:|---:|
+| Temporal JEPA | 2/10 | 2/20 | 2/20 |
+| Temporal JEPA + deterministic belief v1 | 3/10 | **3/20** | **3/20** |
+| Temporal JEPA + uncertainty-aware belief v2 | 2/10 | 2/20 | 2/20 |
+| Belief v2 + active-information lexicase | 3/10 | **3/20** | **3/20** |
+| Temporal JEPA + full-state action oracle | 10/10 | 20/20 | not evaluated |
+
+The learned belief improves success only modestly. Exact shortest-route action is
+not always identifiable before the gap or goal has entered the observation
+history, so treating it as an ordinary deterministic target creates irreducible
+label ambiguity. Collision and barrier memory transfer well; route inference does
+not. The next version should predict uncertainty-aware traversability and
+information-gathering value rather than distilling a hidden-state planner action.
+This module is supervised belief-state distillation on top of JEPA, not a pure JEPA
+objective, and should be described as such.
+
+Belief v2 replaces the single planner-action label with a safe-route distribution
+mixed according to unobserved coverage. It also predicts information gained by the
+action actually taken and the fraction of the grid observed so far. On validation,
+exploration/coverage MAE was 0.048 while collision and barrier accuracy remained
+98.8% and 92.5%. Exact route accuracy fell to 38.4%, as expected for a soft target.
+
+Despite exposing uncertainty, v2 returned to 2/20 held-out successes. Mean unique
+observations rose from 7.2 for JEPA-only to 8.2, but remained below v1's 12.7. The
+current evolutionary objective rewards movement novelty and goal completion, not
+uncertainty reduction itself. Providing an information-gain estimate therefore does
+not ensure that NEAT will choose information-gathering actions. This is a negative
+result: uncertainty-aware features alone are insufficient without a controller
+objective or learning rule that values active information gathering.
+
+An active-information epsilon-lexicase condition adds simultaneous per-layout
+cases for task fitness, entropy reduction multiplied by confirmed coverage,
+confirmed observations/positions, and safe exploration. It is not a staged
+curriculum: case order is randomized for every parent selection, and final winner
+selection still uses ordinary aggregate task fitness. At the same 20×30 budget it
+recovers 3/20 in both palettes. Mean confirmed observations increase from 8.2 for
+ordinary v2 to 9.4, while mean cumulative route-entropy reduction changes only from
+0.513 to 0.527. Active selection helps recover one success, but does not outperform
+deterministic belief v1, which reaches 12.7 mean observations and 3/20.
+
+### Evolution-seed replication
+
+The v1, ordinary-v2, and active-v2 conditions were repeated with evolution seeds
+19, 29, and 39. Every run used the same 20-generation, population-30 budget,
+training-layout pool 0-49, five sampled layouts per generation, and held-out
+layouts 50-69.
+
+| Evolution seed | Deterministic v1 | Ordinary v2 | Active v2 |
+|---:|---:|---:|---:|
+| 19 | 3/20 | 2/20 | 3/20 |
+| 29 | 3/20 | 3/20 | 3/20 |
+| 39 | 3/20 | 3/20 | 3/20 |
+| **Total** | **9/60** | **8/60** | **9/60** |
+
+Mean unique observations across the three runs were 17.17 for v1, 10.40 for
+ordinary v2, and 15.78 for active v2; mean unique positions were 8.67, 7.80, and
+8.55 respectively. Thus, the original 2/20-to-3/20 active-v2 improvement does not
+replicate as an advantage over v1. Active selection remains competitive and often
+changes behavior, but neither success nor exploration improves consistently across
+evolution seeds. With only 60 episodes per condition and highly correlated fixed
+hold-out layouts, these totals are descriptive rather than a significance claim.
+Every 3/20 winner solved the same held-out layouts: seeds 52, 60, and 65. Ordinary
+v2 at evolution seed 19 instead solved seeds 53 and 59. The repeated 3/20 result is
+therefore a stable competence boundary on a particular layout subset, not evidence
+that different evolutionary runs discover complementary solutions.
+
+### Tiny-recursive belief pilot
+
+A TRM-inspired continuous belief head was tested between the frozen temporal JEPA
+and recurrent NEAT. This is not a direct reproduction of the discrete puzzle TRM:
+MiniGrid is online and partially observed, so the head carries a persistent
+64-value answer state and 64-value scratch state between environment steps. Inside
+each step, one shared two-layer refiner repeatedly updates both states from the
+current 128-value JEPA latent and previous action. The final answer state is decoded
+into the same route, collision, goal, barrier, and exploration targets as belief v2.
+Intermediate refinements receive auxiliary supervision during training.
+
+The recursive head has 41,264 parameters, versus 39,824 for uncertainty-aware GRU
+belief v2. Depth 1 and depth 6 use exactly the same architecture and parameter
+count; only repeated computation changes. Both were trained for 600 updates on the
+same 280 training and 60 validation episodes.
+
+| Belief decoder | Refinements | Validation route accuracy | Collision accuracy | Goal MAE | Exploration MAE |
+|---|---:|---:|---:|---:|---:|
+| GRU belief v2, 1,500 updates | 1 recurrent update | 38.4% | 98.8% | 0.122 | 0.048 |
+| Tiny-recursive | 1 | 38.7% | 98.8% | 0.130 | 0.077 |
+| Tiny-recursive | 6 | **40.7%** | 98.8% | 0.137 | 0.094 |
+
+The two recursive checkpoints were then given identical seed-19 NEAT searches at
+20 generations by 30 genomes.
+
+| Recursive depth | Training layouts | Held-out standard | Held-out cyclic RGB | Mean observations | Mean positions |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 3/10 | 3/20 | 3/20 | 10.8 | 7.80 |
+| 6 | 3/10 | 3/20 | 3/20 | 11.6 | 8.15 |
+
+Both controllers solved exactly layouts 52, 60, and 65 in 18 mean steps. Sixfold
+refinement modestly improves route-label accuracy and exploration, but does not
+expand held-out control competence and incurs substantial CPU inference cost. This
+single-evolution-seed pilot supports architectural compatibility between JEPA and
+recursive belief refinement; it does not support a control advantage. Because the
+GRU used more training updates, its validation row is contextual rather than a
+strict compute-matched baseline.
+
+### Learned evidence-map pilot
+
+The next pilot removes planner-action and hidden-route targets. A 28,774-parameter
+spatial head decodes only view-aligned terrain evidence from the frozen 128-value
+JEPA latent: unseen, free, wall, lava, and goal. A second head predicts whether the
+preceding forward command actually moved the agent. At inference, these predictions
+and known left/right action semantics update a start-relative terrain map. No
+simulator pose, map, collision flag, planner, or hidden cell is exposed.
+
+The controller receives 25 derived queries: immediate action-relative safety,
+lava/wall/unknown evidence, visit evidence, map coverage and confidence, learned
+motion evidence, and relative observed goal/frontier direction. It also retains the
+original JEPA latent and previous-action input.
+
+Rare evidence exposed a calibration tradeoff on validation layouts 40-49:
+
+| Evidence training | Visible accuracy | Lava precision / recall / F1 | Goal precision / recall / F1 | Wall recall | Motion accuracy |
+|---|---:|---:|---:|---:|---:|
+| Unbalanced | 82.8% | not recorded / 55.7% / not recorded | not recorded / 17.0% / not recorded | 99.7% | 100% |
+| Rare-frame balanced, high recall | 75.4% | 22.0% / 72.9% / 33.6% | 14.4% / 66.2% / 23.6% | 99.3% | 100% |
+| Rare-frame balanced, lower weights | 89.9% | 33.2% / 14.4% / 19.9% | 21.4% / 11.9% / 15.2% | 99.4% | 100% |
+
+The high-recall checkpoint was selected because missed lava cannot contribute to
+avoidance, while repeated observations could in principle average false evidence.
+With the same seed-19 20-generation by 30-genome NEAT budget, it solved 2/10 final
+training layouts and only 1/20 held-out layouts in both standard and cyclic RGB.
+The lone held-out success was layout 53 and required 175 steps. Mean unique
+observations increased to 14.05, but mean unique positions fell to 7.35.
+
+This is a negative result for the current accumulator, not for evidence-based
+belief generally. The head learns walls and observable motion very reliably, but
+class-weighted rare predictions are not calibrated. Because evidence is persistent,
+even infrequent false lava or goal claims become durable map errors. The next
+implementation should calibrate per-class likelihood ratios on validation data,
+retain explicit unknown mass, and decay or revise conflicting evidence before
+adding pose hypotheses or recursive refinement.
+
+#### Calibrated likelihood-ratio revision
+
+The follow-up retains the high-recall terrain decoder but calibrates its outputs on
+half of the unseen validation samples using one scalar temperature and five
+per-class biases. The remaining validation samples are kept as an audit split. The
+map no longer sums class probabilities. It divides calibrated terrain posteriors by
+their empirical class priors, accumulates bounded log-likelihood ratios, tracks
+evidence strength separately as explicit unknown mass, and discounts an old claim
+whenever the cell is re-observed so contradictory evidence can revise it.
+
+| Audit metric | Raw weighted decoder | Calibrated decoder |
+|---|---:|---:|
+| Multiclass NLL | 0.245 | **0.130** |
+| Brier score | 0.162 | **0.075** |
+| Visible terrain accuracy | 75.9% | **91.1%** |
+| Lava precision | 22.0% | **43.2%** |
+| Goal precision | 13.7% | **31.7%** |
+| Motion accuracy | 100% | 100% |
+
+Argmax lava and goal recall fall after calibration, but map integration consumes
+continuous likelihood ratios rather than hard classifications. Consistent weak
+evidence can therefore accumulate without treating every rare-class argmax as a
+durable fact.
+
+At the same seed-19 20-generation by 30-genome controller budget, calibrated
+revision improves final training success from 2/10 to 3/10 and held-out success
+from 1/20 to **3/20**. It remains 3/20 under cyclic RGB. Mean observations rise
+from 14.05 to 16.05 and mean positions from 7.35 to 7.95; successful episodes
+average 66 steps rather than 175. This validates calibration and revisable evidence
+as necessary components. However, the successful layouts are again exactly seeds
+52, 60, and 65, so the method restores the established competence boundary rather
+than extending it.
+
 ## Interpretation
 
 ### Supported by the evidence
@@ -381,6 +603,8 @@ held-out seed 52 under standard RGB and cyclic `RGB→GBR`:
 - A small frozen predictive representation can support some held-out visual control
   without a symbolic map.
 - Additional NEAT compute alone does not resolve the low success rate.
+- Explicit full-state route advice raises the matched controller from 2/20 to
+  20/20, localizing the main gap to route-relevant state estimation or memory.
 - Appearance invariance does not emerge automatically from single-palette temporal
   prediction.
 
@@ -388,7 +612,8 @@ held-out seed 52 under standard RGB and cyclic `RGB→GBR`:
 
 - The system does not solve MiniGrid reliably.
 - Temporal JEPA has not outperformed downsampled RGB on success rate.
-- The representation is not color-invariant.
+- The representation is not invariant to arbitrary palette, lighting, texture,
+  camera, or geometry changes; only RGB channel permutations are guaranteed.
 - No sim-to-real or robotics transfer has been demonstrated.
 - No sample-efficiency or compute advantage over PPO, SAC, Dreamer, an MLP/GRU
   controller, or model-predictive control has been demonstrated.
@@ -477,22 +702,27 @@ under black-box constraints or distribution shift.
 
 Priority order:
 
-1. **Broader appearance invariance.** Extend beyond the now-solved channel-permutation
-   case to lighting, hue, texture, and camera perturbations without discarding
-   task-relevant visual information.
+1. **Audit map alignment and add pose hypotheses.** Calibration repairs the
+   evidence collapse, but success remains limited to the same layouts. Measure
+   cell-level accumulated-map accuracy over time, then replace the single
+   dead-reckoned pose with a small distribution over competing poses.
 2. **Control-oriented representation diagnostics.** Measure whether latent distance
    correlates with action reachability, collision risk, and goal progress rather than
    only next-frame prediction error.
-3. **Shuffled-context ablation.** Shuffle frame or action order at evaluation to verify
+3. **Stronger learned memory baseline.** Compare recurrent NEAT with a small GRU or
+   state-space controller trained on the same frozen JEPA sequence.
+4. **Shuffled-context ablation.** Shuffle frame or action order at evaluation to verify
    that the controller uses temporal structure rather than static appearance alone.
-4. **Gradient-trained controller baseline.** Compare the frozen latent with MLP, GRU,
+5. **Gradient-trained controller baseline.** Compare the frozen latent with MLP, GRU,
    PPO/SAC, and a small planning/value head under matched environment interaction.
-5. **Remove position shaping.** Evaluate with success, observation novelty, and blocked
+6. **Broader appearance invariance.** Extend beyond the now-solved channel-permutation
+   case to lighting, hue, texture, and camera perturbations.
+7. **Remove position shaping.** Evaluate with success, observation novelty, and blocked
    penalties only, or replace dead reckoning with a separately audited observable
    odometry signal.
-6. **Cross-task reuse.** Freeze one JEPA across several LavaCrossing families and other
+8. **Cross-task reuse.** Freeze one JEPA across several LavaCrossing families and other
    visual navigation tasks while evolving separate small adapters.
-7. **Archive evaluation.** Test whether MAP-Elites contains meaningfully different
+9. **Archive evaluation.** Test whether MAP-Elites contains meaningfully different
    recovery or risk profiles, rather than merely redundant low-fitness policies.
 
 ## Repository map
@@ -502,6 +732,8 @@ Priority order:
 | `zima_py/rgb_jepa.py` | Spatial and temporal RGB encoders, predictors, replay, training, checkpoints |
 | `zima_py/train_rgb_jepa.py` | One-frame spatial-JEPA pretraining |
 | `zima_py/train_temporal_rgb_jepa.py` | Four-frame temporal-JEPA pretraining |
+| `zima_py/jepa_belief.py` | Frozen-JEPA recurrent belief decoder and checkpoint format |
+| `zima_py/train_jepa_belief.py` | Privileged-label belief pretraining; partial RGB at inference |
 | `zima_py/evolve_rgb_neat.py` | RGB controls, recurrent NEAT, lexicase, MAP-Elites, paired color evaluation |
 | `zima_py/evaluate_rgb_neat.py` | Paired evaluation of a frozen winner under standard and shifted RGB |
 | `zima_py/visualize_rgb_terrain.py` | Current RGB versus earlier persistent-map visualization |
@@ -527,6 +759,18 @@ uv run zima-temporal-rgb-jepa-train \
   --horizon 1 --horizon 2 --horizon 4 \
   --checkpoint artifacts/jepa/temporal-rgb-s9n1-improved.pt \
   --report artifacts/jepa/temporal-rgb-s9n1-improved-training.json
+```
+
+Train the recurrent belief decoder and evolve a controller with both modules
+frozen:
+
+```bash
+uv run zima-jepa-belief-train
+uv run zima-rgb-neat \
+  --input-mode temporal-jepa --seed 19 \
+  --checkpoint artifacts/jepa/temporal-rgb-s9n1-improved.pt \
+  --belief-checkpoint artifacts/jepa/temporal-rgb-s9n1-belief.pt \
+  --generations 20 --population 30
 ```
 
 Evolve a trained temporal-JEPA controller and run paired color holdouts:
@@ -590,6 +834,14 @@ Primary evidence files:
 - `artifacts/jepa/temporal-rgb-s9n1-fresh-training.json`
 - `artifacts/jepa/temporal-rgb-s9n1-improved-training.json`
 - `artifacts/jepa/temporal-improved-neat-seed19-report.json`
+- `artifacts/jepa/temporal-rgb-s9n1-belief-training.json`
+- `artifacts/jepa/temporal-belief-neat-seed19-report.json`
+- `artifacts/jepa/temporal-belief-neat-seed19-color-report.json`
+- `artifacts/jepa/temporal-rgb-s9n1-belief-v2-training.json`
+- `artifacts/jepa/temporal-belief-v2-neat-seed19-report.json`
+- `artifacts/jepa/temporal-belief-v2-neat-seed19-color-report.json`
+- `artifacts/jepa/temporal-belief-v2-active-neat-seed19-report.json`
+- `artifacts/jepa/temporal-belief-v2-active-neat-seed19-color-report.json`
 - `artifacts/jepa/temporal-jepa-color-success-seed52.mp4`
 - `artifacts/jepa/temporal-full-jepa-report.json`
 - `artifacts/jepa/temporal-full-random-report.json`
@@ -614,8 +866,15 @@ The strongest defensible claim from this repository is:
 > random encoder produced no held-out successes across three evolution seeds.
 > The baseline degraded substantially under an unseen color transformation. An
 > improved, channel-canonical multi-horizon checkpoint eliminated that specific
-> transfer gap at matched controller budget, but did not increase standard-color
-> navigation success, leaving control alignment as the main observed bottleneck.
+> transfer gap at matched controller budget. Feed-forward and expanded-search
+> ablations remained at 1/20 and 2/20, while explicit full-state route advice
+> reached 20/20. A learned recurrent belief decoder improved matched held-out
+> success to 3/20 without inference-time simulator state, but ambiguous route
+> prediction remained weak. An uncertainty-aware second version returned to 2/20,
+> while simultaneous active-information lexicase recovered 3/20. This does not yet
+> outperform deterministic belief v1, but it shows that controller selection affects
+> whether uncertainty-aware features are used. The main observed bottleneck remains
+> active belief construction and information-gathering control.
 
 Anything stronger requires broader environments, conventional learning baselines,
 and eventually simulator or robot validation.

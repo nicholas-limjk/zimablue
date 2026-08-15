@@ -1,0 +1,54 @@
+{
+  "environment": "MiniGrid-LavaCrossingS9N1-v0",
+  "jepa_checkpoint": "C:\\Users\\nicho\\Documents\\zimablue\\artifacts\\jepa\\temporal-rgb-s9n1-improved.pt",
+  "targets": {
+    "route": "uncertainty-mixed safe-route distribution: left/right/forward",
+    "collision": "immediate collision risk for left/right/forward",
+    "goal": "safe-distance, egocentric forward/right goal offset, distance progress",
+    "barrier": "crossed-barrier event and persistent opposite-side belief",
+    "exploration": "chosen-action information gain and history-derived coverage"
+  },
+  "objective_version": 2,
+  "belief_architecture": "tiny-recursive",
+  "recursion_depth": 6,
+  "privileged_labels_training_only": true,
+  "seed": 29,
+  "hidden_size": 64,
+  "architecture": "tiny-recursive",
+  "refinement_size": 96,
+  "belief_parameters": 41264,
+  "belief_feature_size": 80,
+  "training_episodes": 280,
+  "training_steps": 12629,
+  "validation_episodes": 60,
+  "validation_steps": 2999,
+  "updates": 600,
+  "latest_batch": {
+    "loss": 1.2936241626739502,
+    "route_loss": 0.9788306355476379,
+    "route_accuracy": 0.5731958746910095,
+    "collision_accuracy": 0.9800687432289124,
+    "goal_mae": 0.11281689256429672,
+    "barrier_accuracy": 0.9958763122558594,
+    "exploration_mae": 0.09501370787620544
+  },
+  "training_metrics": {
+    "loss": 1.389721160613119,
+    "route_loss": 0.9661951770086981,
+    "route_accuracy": 0.5998891515803173,
+    "collision_accuracy": 0.9853247810036867,
+    "goal_mae": 0.12695301026318265,
+    "barrier_accuracy": 0.9452054712870349,
+    "exploration_mae": 0.09715006745728133
+  },
+  "validation_metrics": {
+    "loss": 1.4892609142867594,
+    "route_loss": 1.0038648116743616,
+    "route_accuracy": 0.40713572059921044,
+    "collision_accuracy": 0.9875514091114554,
+    "goal_mae": 0.1372119759710362,
+    "barrier_accuracy": 0.923307771720899,
+    "exploration_mae": 0.09434406784285145
+  },
+  "output": "C:\\Users\\nicho\\Documents\\zimablue\\artifacts\\jepa\\temporal-rgb-s9n1-trm-belief-d6.pt"
+}

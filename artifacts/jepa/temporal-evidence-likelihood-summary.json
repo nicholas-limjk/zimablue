@@ -1,0 +1,39 @@
+{
+  "environment": "MiniGrid-LavaCrossingS9N1-v0",
+  "architecture": "calibrated likelihood-ratio terrain evidence with revisable persistent map",
+  "evidence_parameters": 28774,
+  "calibration": {
+    "temperature": 0.8119986057281494,
+    "audit_raw_nll": 0.24496129155158997,
+    "audit_calibrated_nll": 0.1301395446062088,
+    "audit_raw_brier": 0.16151651740074158,
+    "audit_calibrated_brier": 0.07517809420824051,
+    "audit_visible_accuracy": 0.9106287360191345,
+    "audit_wall_precision": 0.9839683175086975,
+    "audit_wall_recall": 0.9841455817222595,
+    "audit_lava_precision": 0.4318840503692627,
+    "audit_lava_recall": 0.0571976974606514,
+    "audit_goal_precision": 0.31707316637039185,
+    "audit_goal_recall": 0.06310679763555527,
+    "audit_motion_accuracy": 1.0
+  },
+  "control": {
+    "evolution_seed": 19,
+    "generations": 20,
+    "population": 30,
+    "training_solved": 3,
+    "training_episodes": 10,
+    "heldout_standard_solved": 3,
+    "heldout_cyclic_solved": 3,
+    "heldout_episodes": 20,
+    "solved_layout_seeds": [52, 60, 65],
+    "mean_solved_steps": 66.0,
+    "mean_unique_observations": 16.05,
+    "mean_unique_positions": 7.95
+  },
+  "comparison": {
+    "additive_evidence_heldout_solved": 1,
+    "calibrated_revisable_evidence_heldout_solved": 3
+  },
+  "conclusion": "Calibration and revisable likelihood evidence repair the additive map collapse, but do not expand success beyond the existing three-layout competence boundary."
+}

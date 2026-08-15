@@ -1,0 +1,1101 @@
+{
+  "environment": "MiniGrid-LavaCrossingS9N1-v0",
+  "input_mode": "temporal-jepa",
+  "semantic_inputs": false,
+  "persistent_map": false,
+  "train_rgb_style": "standard",
+  "holdout_rgb_style": "standard",
+  "visual_feature_count": 128,
+  "controller_input_count": 136,
+  "controller": "feedforward",
+  "oracle_action_hint": false,
+  "seed": 19,
+  "generations": 20,
+  "population": 30,
+  "training_seed_pool": 50,
+  "cases_per_generation": 5,
+  "case_schedule": [
+    [
+      43,
+      2,
+      33,
+      7,
+      32
+    ],
+    [
+      29,
+      38,
+      25,
+      40,
+      16
+    ],
+    [
+      16,
+      35,
+      48,
+      3,
+      19
+    ],
+    [
+      1,
+      23,
+      6,
+      44,
+      9
+    ],
+    [
+      0,
+      34,
+      36,
+      2,
+      41
+    ],
+    [
+      27,
+      7,
+      46,
+      22,
+      8
+    ],
+    [
+      15,
+      39,
+      49,
+      8,
+      14
+    ],
+    [
+      33,
+      32,
+      14,
+      44,
+      43
+    ],
+    [
+      12,
+      38,
+      2,
+      24,
+      44
+    ],
+    [
+      2,
+      40,
+      16,
+      12,
+      18
+    ],
+    [
+      39,
+      29,
+      40,
+      30,
+      11
+    ],
+    [
+      1,
+      41,
+      39,
+      44,
+      29
+    ],
+    [
+      31,
+      41,
+      30,
+      34,
+      3
+    ],
+    [
+      2,
+      42,
+      9,
+      36,
+      23
+    ],
+    [
+      14,
+      0,
+      21,
+      42,
+      23
+    ],
+    [
+      47,
+      49,
+      37,
+      9,
+      25
+    ],
+    [
+      31,
+      9,
+      37,
+      46,
+      23
+    ],
+    [
+      43,
+      34,
+      20,
+      11,
+      1
+    ],
+    [
+      11,
+      15,
+      16,
+      12,
+      22
+    ],
+    [
+      4,
+      19,
+      43,
+      37,
+      5
+    ]
+  ],
+  "selection": "epsilon_lexicase",
+  "map_elites": true,
+  "map_elites_archive": [
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 6.738700000000001,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.136499999999999,
+      "generation": 14
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.2743,
+      "generation": 3
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.2162999999999995,
+      "generation": 11
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 1.6082999999999998,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 1.8828500000000004,
+      "generation": 7
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 2.3664,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 1.7977000000000003,
+      "generation": 12
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 3
+      },
+      "fitness": 0.7824500000000002,
+      "generation": 10
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 2
+      },
+      "fitness": 1.7265000000000001,
+      "generation": 18
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 7,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.99105,
+      "generation": 7
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 6,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -1.0294999999999999,
+      "generation": 2
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 5,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.5549,
+      "generation": 7
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.9337,
+      "generation": 3
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 4
+      },
+      "fitness": -0.8783,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.3575,
+      "generation": 0
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.4587,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 3
+      },
+      "fitness": -1.77715,
+      "generation": 16
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 2
+      },
+      "fitness": -1.91125,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.1275,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 4
+      },
+      "fitness": -1.1401,
+      "generation": 11
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 3
+      },
+      "fitness": -0.6013,
+      "generation": 5
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 2
+      },
+      "fitness": -1.9743499999999998,
+      "generation": 2
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 1
+      },
+      "fitness": -0.9627000000000001,
+      "generation": 15
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 0
+      },
+      "fitness": -0.67125,
+      "generation": 1
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.1735,
+      "generation": 7
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 4
+      },
+      "fitness": -1.6477,
+      "generation": 10
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 3
+      },
+      "fitness": -1.9368999999999998,
+      "generation": 16
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 1
+      },
+      "fitness": -0.8693,
+      "generation": 14
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 0
+      },
+      "fitness": -0.54,
+      "generation": 18
+    }
+  ],
+  "checkpoint": "C:\\Users\\nicho\\Documents\\zimablue\\artifacts\\jepa\\temporal-rgb-s9n1-improved.pt",
+  "context_length": 4,
+  "encoder_parameters": {
+    "context_encoder": 21400,
+    "predictor": 7008,
+    "total": 28408
+  },
+  "winner_source": "archive:(0, 0, 1, 1, 2)",
+  "winner_fitness": 1.5848,
+  "winner_nodes": 9,
+  "winner_connections": 244,
+  "training_evaluation": {
+    "episodes": 10,
+    "solved": 2,
+    "success_rate": 0.2,
+    "mean_solved_steps": 16.0,
+    "runs": [
+      {
+        "seed": 0,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 1,
+        "solved": true,
+        "steps": 16,
+        "fitness": 10.164,
+        "unique_observations": 14,
+        "unique_positions": 13,
+        "blocked_steps": 1,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 2,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 3,
+        "solved": false,
+        "steps": 5,
+        "fitness": -0.93,
+        "unique_observations": 5,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 4,
+        "solved": true,
+        "steps": 16,
+        "fitness": 10.169,
+        "unique_observations": 15,
+        "unique_positions": 13,
+        "blocked_steps": 1,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 5,
+        "solved": false,
+        "steps": 3,
+        "fitness": -0.958,
+        "unique_observations": 3,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 6,
+        "solved": false,
+        "steps": 5,
+        "fitness": -0.93,
+        "unique_observations": 5,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 7,
+        "solved": false,
+        "steps": 15,
+        "fitness": -0.845,
+        "unique_observations": 14,
+        "unique_positions": 12,
+        "blocked_steps": 1,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 8,
+        "solved": false,
+        "steps": 1,
+        "fitness": -0.986,
+        "unique_observations": 1,
+        "unique_positions": 2,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 9,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      }
+    ]
+  },
+  "standard_holdout_evaluation": {
+    "episodes": 20,
+    "solved": 1,
+    "success_rate": 0.05,
+    "mean_solved_steps": 16.0,
+    "runs": [
+      {
+        "seed": 50,
+        "solved": false,
+        "steps": 5,
+        "fitness": -0.93,
+        "unique_observations": 5,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 51,
+        "solved": false,
+        "steps": 3,
+        "fitness": -0.958,
+        "unique_observations": 3,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 52,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 53,
+        "solved": true,
+        "steps": 16,
+        "fitness": 10.164,
+        "unique_observations": 14,
+        "unique_positions": 13,
+        "blocked_steps": 1,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 54,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.467,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 38,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 55,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.467,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 38,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 56,
+        "solved": false,
+        "steps": 1,
+        "fitness": -0.986,
+        "unique_observations": 1,
+        "unique_positions": 2,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 57,
+        "solved": false,
+        "steps": 3,
+        "fitness": -0.958,
+        "unique_observations": 3,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 58,
+        "solved": false,
+        "steps": 5,
+        "fitness": -0.93,
+        "unique_observations": 5,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 59,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 60,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 61,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.467,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 38,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 62,
+        "solved": false,
+        "steps": 1,
+        "fitness": -0.986,
+        "unique_observations": 1,
+        "unique_positions": 2,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 63,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 64,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 65,
+        "solved": false,
+        "steps": 5,
+        "fitness": -0.93,
+        "unique_observations": 5,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 66,
+        "solved": false,
+        "steps": 3,
+        "fitness": -0.958,
+        "unique_observations": 3,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 67,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 68,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.467,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 38,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 69,
+        "solved": false,
+        "steps": 3,
+        "fitness": -0.958,
+        "unique_observations": 3,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      }
+    ]
+  },
+  "holdout_evaluation": {
+    "episodes": 20,
+    "solved": 1,
+    "success_rate": 0.05,
+    "mean_solved_steps": 16.0,
+    "runs": [
+      {
+        "seed": 50,
+        "solved": false,
+        "steps": 5,
+        "fitness": -0.93,
+        "unique_observations": 5,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 51,
+        "solved": false,
+        "steps": 3,
+        "fitness": -0.958,
+        "unique_observations": 3,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 52,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 53,
+        "solved": true,
+        "steps": 16,
+        "fitness": 10.164,
+        "unique_observations": 14,
+        "unique_positions": 13,
+        "blocked_steps": 1,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 54,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.467,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 38,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 55,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.467,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 38,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 56,
+        "solved": false,
+        "steps": 1,
+        "fitness": -0.986,
+        "unique_observations": 1,
+        "unique_positions": 2,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 57,
+        "solved": false,
+        "steps": 3,
+        "fitness": -0.958,
+        "unique_observations": 3,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 58,
+        "solved": false,
+        "steps": 5,
+        "fitness": -0.93,
+        "unique_observations": 5,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 59,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 60,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 61,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.467,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 38,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 62,
+        "solved": false,
+        "steps": 1,
+        "fitness": -0.986,
+        "unique_observations": 1,
+        "unique_positions": 2,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 63,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 64,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 65,
+        "solved": false,
+        "steps": 5,
+        "fitness": -0.93,
+        "unique_observations": 5,
+        "unique_positions": 6,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 66,
+        "solved": false,
+        "steps": 3,
+        "fitness": -0.958,
+        "unique_observations": 3,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 67,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.457,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 37,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 68,
+        "solved": false,
+        "steps": 192,
+        "fitness": -0.467,
+        "unique_observations": 9,
+        "unique_positions": 7,
+        "blocked_steps": 38,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 69,
+        "solved": false,
+        "steps": 3,
+        "fitness": -0.958,
+        "unique_observations": 3,
+        "unique_positions": 4,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      }
+    ]
+  },
+  "fitness_history": [
+    -0.16925,
+    1.4577000000000004,
+    1.4825000000000004,
+    4.2743,
+    -0.21499999999999997,
+    1.6319000000000004,
+    -0.21499999999999997,
+    1.8828500000000004,
+    1.8293000000000004,
+    1.4437000000000002,
+    4.122299999999999,
+    4.2162999999999995,
+    4.0749,
+    1.4978999999999996,
+    4.136499999999999,
+    1.5239000000000003,
+    1.5629,
+    6.738700000000001,
+    4.099399999999999,
+    1.6553
+  ],
+  "winner": "C:\\Users\\nicho\\Documents\\zimablue\\artifacts\\jepa\\diagnostic-feedforward-seed19-winner.pkl"
+}

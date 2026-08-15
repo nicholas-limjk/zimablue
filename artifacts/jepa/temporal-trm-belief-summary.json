@@ -1,0 +1,35 @@
+{
+  "environment": "MiniGrid-LavaCrossingS9N1-v0",
+  "architecture": "persistent tiny-recursive belief refinement over frozen temporal-JEPA latents",
+  "parameters": 41264,
+  "training": {
+    "updates": 600,
+    "training_episodes": 280,
+    "validation_episodes": 60
+  },
+  "depth_1": {
+    "validation_route_accuracy": 0.3867955944585021,
+    "validation_collision_accuracy": 0.9875514091114554,
+    "validation_goal_mae": 0.1298384478575947,
+    "validation_exploration_mae": 0.07662574832848447,
+    "heldout_standard_solved": 3,
+    "heldout_cyclic_solved": 3,
+    "heldout_episodes": 20,
+    "solved_layout_seeds": [52, 60, 65],
+    "mean_unique_observations": 10.8,
+    "mean_unique_positions": 7.8
+  },
+  "depth_6": {
+    "validation_route_accuracy": 0.40713572059921044,
+    "validation_collision_accuracy": 0.9875514091114554,
+    "validation_goal_mae": 0.1372119759710362,
+    "validation_exploration_mae": 0.09434406784285145,
+    "heldout_standard_solved": 3,
+    "heldout_cyclic_solved": 3,
+    "heldout_episodes": 20,
+    "solved_layout_seeds": [52, 60, 65],
+    "mean_unique_observations": 11.6,
+    "mean_unique_positions": 8.15
+  },
+  "conclusion": "Recursive refinement is compatible with the frozen JEPA and improves route-label accuracy, but this pilot does not improve held-out control success over depth one."
+}

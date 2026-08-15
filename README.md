@@ -24,9 +24,175 @@ The colour-transfer failure was removed in this test, although navigation remain
 the main bottleneck. The result supports colour robustness; it does **not** yet
 show that JEPA outperforms raw observations or explicit terrain memory.
 
-[Watch the paired successful normal/shifted-colour replay](artifacts/jepa/temporal-jepa-color-success-seed52.mp4).
+A follow-up bottleneck ablation found:
+
+| Controller diagnostic | Held-out success |
+|---|---:|
+| Feed-forward NEAT, matched budget | 1/20 |
+| Recurrent NEAT, matched budget | 2/20 |
+| Recurrent NEAT, 3.3× search | 2/20 |
+| Recurrent NEAT + deterministic belief v1 | **3/20** |
+| Recurrent NEAT + uncertainty-aware belief v2 | 2/20 |
+| Belief v2 + active-information lexicase | **3/20** |
+| Recurrent NEAT + full-state next-safe-action oracle | 20/20 |
+
+The oracle is an intentionally strong diagnostic, not a proposed solution. It
+shows that the evolved controller can generalize when route-relevant state is
+explicit; the main remaining problem is learning and retaining that state from
+partial visual history.
+
+The first learned replacement is a 39,564-parameter GRU belief decoder trained on
+frozen JEPA sequences. Simulator state supplies labels only during pretraining;
+control receives partial RGB history and previous actions. It reached 3/20 under
+both standard and cyclic colours. This is a modest improvement, with unseen-layout
+route prediction—not collision or barrier memory—remaining the weak target.
+
+V2 replaces the omniscient single-action target with a soft safe-route
+distribution and adds learned information gain and observed coverage. It predicts
+those targets accurately but returns to 2/20. Merely exposing uncertainty does not
+make the evolutionary objective value information gathering; an explicit
+uncertainty-reduction objective or a controller trained for exploration is the next
+test.
+
+Adding concurrent active-information cases to epsilon-lexicase recovers 3/20 while
+keeping the same 20×30 budget. Mean confirmed observations rise from 8.2 to 9.4,
+and both standard and cyclic-colour evaluation remain 3/20. This supports active
+selection as useful, but it only matches deterministic belief v1 rather than
+surpassing it.
+
+That single-seed result was repeated with evolution seeds 19, 29, and 39. On the
+same 20 held-out layouts per run, deterministic belief v1 scored **9/60**, ordinary
+belief v2 scored **8/60**, and active-information v2 scored **9/60**. Active
+selection therefore does not show a robust success-rate advantage over v1 in this
+sample. It also does not consistently increase exploration: mean unique
+observations were 17.17 for v1, 10.40 for ordinary v2, and 15.78 for active v2.
+The useful conclusion is narrower: active lexicase is compatible with task
+performance, but the dominant bottleneck remains the learned belief itself. Every
+3/20 winner solved the same held-out layouts (seeds 52, 60, and 65), indicating a
+stable competence boundary rather than broader generalization.
+
+A parameter-matched tiny-recursive belief pilot replaces the GRU decoder with a
+41,264-parameter shared refiner carrying persistent answer and scratch states.
+Applying the same weights six times per observation raised validation route
+accuracy from 38.7% at depth 1 to 40.7%, but both evolved controllers still solved
+exactly 3/20 held-out layouts (52, 60, and 65). Depth 6 explored slightly more
+positions, at substantially higher inference cost, without expanding the competence
+boundary. This suggests recursive refinement is compatible with frozen JEPA state,
+but better evidence and belief targets remain more important than additional
+within-step computation.
+
+An explicit evidence-map pilot then decoded view-visible free/wall/lava/goal
+probabilities from the frozen JEPA and accumulated them using learned motion
+evidence. The 28,774-parameter head reached 99.3% wall recall and 100% motion
+accuracy, but the high-recall setting produced poorly calibrated rare evidence
+(lava precision 22.0%, goal precision 14.4%). Its evolved controller solved only
+1/20 in both standard and cyclic colours, taking 175 steps on the lone success.
+This does not reject explicit belief maps; it shows that persistent memory amplifies
+false evidence unless confidence is calibrated before accumulation.
+
+The calibrated follow-up fits a scalar temperature, per-class biases, and terrain
+priors on one validation split, then accumulates bounded likelihood ratios with
+explicit unknown strength and contradictory-evidence revision. Audit NLL improves
+from 0.245 to 0.130 and Brier score from 0.162 to 0.075. Under the same NEAT budget,
+control recovers from 1/20 to **3/20** in both palettes. It still solves exactly
+layouts 52, 60, and 65, so calibration repairs the map but does not yet broaden
+generalization.
+
+A later graph-mode pilot keeps JEPA and the calibrated local MPC fixed, builds a
+non-metric graph from target-frame JEPA latents, and evolves only a three-way
+selector over local planning, return-to-frontier, and safe probing. Its
+return-specialist MAP-Elites archive member solved **4/20** held-out layouts,
+including the first interior-gap geometry reached by this project (seeds 57 and
+69). The robust selected winner remained 2/20, so this is evidence that the
+behavioral decomposition works, not yet a stable aggregate result. See the
+[counterfactual JEPA/neuroevolution report](docs/counterfactual-jepa-neuroevolution.md).
+
+The committed-return follow-up uses geometry-balanced evolution, a disjoint
+validation set, and an untouched 40-layout test. Across three evolution
+restarts, validation selects the seed-29 controller, which scores **6/40** versus
+the fixed controller's **3/40** and solves all three test instances of an
+interior-gap geometry. Other restarts score 1/40 and 4/40, so multi-restart
+validation selection is important; the result is not uniformly robust per run.
+Warm-starting a new population from the selected genome preserves 6/40 but does
+not improve it, indicating that selectable frontier destinations—not additional
+mutation around the same nearest-frontier mode—are the next controller change.
+Exposing nearest, oldest, and least-visited frontiers does not help under a
+matched pilot: five-output NEAT scores 4/40 and a fixed 125-parameter linear GA
+scores 0/40. The original three-choice NEAT remains best at 6/40, so current
+evidence points to frontier-value information rather than NEAT topology as the
+main limitation.
+
+A strict outcome-only follow-up removes the hand-selected barrier, terrain,
+route, novelty, map, and pose targets. A 50,050-parameter head sees only the
+frozen temporal-JEPA belief, a candidate JEPA latent, and the number of actions
+to that candidate; it predicts eventual episode success and normalized remaining
+steps. Although it reaches 96.8% success classification accuracy on held-out
+logged samples, direct control scores **4/40** on the untouched test set, versus
+3/40 for fixed calibrated JEPA-MPC and 6/40 for the best graph-mode NEAT
+controller. The same four edge-gap seeds are solved with the graph disabled;
+episodic returns do not cause the improvement. This is a mixed but diagnostic
+result: generic outcome value can guide short-horizon JEPA control, but
+observational outcome prediction does not identify useful long-horizon frontier
+value even when its supervised validation metrics are strong.
+
+A reactive-control pilot removes frontier search entirely and evolves a
+feed-forward NEAT policy on a short dynamic-obstacle course. Fitness uses only
+finish-line progress and elapsed time; agent position is never a controller
+input. On one matched 15-generation, population-30 run, raw RGB scores 2/20,
+random temporal features 3/20, trained JEPA latent features 2/20, trained-JEPA
+counterfactuals 1/20, and matched randomized counterfactuals 6/20. On a fixed
+empty 5x5 course all variants solve 10/10; raw RGB takes 5 steps, trained
+counterfactuals 6, randomized counterfactuals 8, and the trained latent alone 8.
+The honest pilot conclusion is that JEPA+NEAT works on simple reactive control,
+but does not yet outperform raw vision or its random-feature controls. The
+dynamic JEPA dataset is small because collisions truncate random episodes, so
+this result motivates better balanced dynamics coverage rather than a larger
+NEAT search.
+
+A matched-action follow-up fixes that coverage failure by cloning each visual
+history and collecting left, right, and forward futures, including terminal
+outcomes. The original JEPA retrieves the correct future branch at roughly
+chance (30-34%); the repaired JEPA reaches 95.8%, 75.8%, and 66.7% at horizons
+1, 2, and 4. Across NEAT evolution seeds 19, 29, and 39, trained
+counterfactuals solve 11/20, 5/20, and 4/20 held-out layouts; matched randomized
+predictors solve 3/20, 4/20, and 3/20. Mean success is therefore **33.3% versus
+16.7%**. The direction repeats across all three seeds, but most of the gain
+comes from seed 19, so controller-search variance remains substantial.
+
+The same repaired protocol on LavaCrossing S9N1 produces a highly causal world
+model—99.2%, 87.0%, and 85.3% correct matched-future retrieval at horizons 1,
+2, and 4—but does not improve held-out coverage under the existing recurrent
+NEAT budget. Trained and randomized predictors both solve 2/20 layouts, although
+the trained model reaches them in 15 rather than 33 mean steps. Terminal
+branches are only 3.9% of replay and the learned rollout drifts after absorbing
+terminal observations, motivating terminal-balanced JEPA training before a
+larger controller search.
+
+Terminal-balanced follow-ups add an absorbing-state loss and test aggressive,
+gentle, and frozen-encoder predictor-only fine-tuning. Aggressive balancing
+improves the horizon-4 terminal/persistence error ratio from 1.73 to 0.55, but
+reduces general branch retrieval from 85.3% to 58.6%; gentler variants retain
+77.2% and 70.9% retrieval but fail to beat persistence on terminal rollout.
+Because no variant improves terminal dynamics while preserving the validated
+world model, these checkpoints are rejected before further NEAT evolution.
+
+Returning to Dynamic Obstacles, a minimal action-relative interface subtracts
+the mean predicted change across left, right, and forward and exposes only the
+one-step differences. This reduces the controller from 429 to 103 inputs. The
+trained JEPA scores exactly 7/20 on evolution seeds 19, 29, and 39 (35% mean),
+versus randomized-predictor scores of 0/20, 0/20, and 6/20 (10% mean). The
+original full interface averages 33.3% trained versus 16.7% randomized. Thus
+the minimal controller preserves performance, strengthens the matched ablation,
+and is much more stable across the three trained runs, though seed-39 random
+performance confirms remaining evolutionary variance.
+The seed-19 compact policy also scores 7/20 under both standard and unseen
+cyclic RGB palettes.
+
+[Watch the paired successful normal/shifted-colour full-grid replay](artifacts/jepa/temporal-jepa-color-success-full-grid-seed52.mp4).
 The panels are separate policy executions on the same held-out layout, not a
-cosmetic recolouring of one recorded trajectory.
+cosmetic recolouring of one recorded trajectory. Blue shading marks the cells
+inside the policy's egocentric observation at each step; the rest of the grid is
+shown only for the viewer.
 
 ```mermaid
 flowchart LR
@@ -57,6 +223,47 @@ uv run zima-rgb-neat \
   --seed 19 --generations 20 --population 30
 
 uv run zima-rgb-color-video
+```
+
+Run the graph-mode neuro-evolution pilot after the JEPA and rollout-outcome
+checkpoints have been trained:
+
+```bash
+python -m zima_py.evolve_jepa_mpc_neat \
+  --outcome-checkpoint artifacts/jepa/temporal-rgb-s9n1-rollout-outcome-balanced.pt \
+  --episodic-graph-capacity 128 --fixed-energy-prior \
+  --controller-kind mode-selector --mode-safety-margin 2.0 \
+  --commit-return --seed 29 --generations 5 --population 20 \
+  --training-start 0 --training-seed-pool 50 \
+  --cases-per-generation 6 --geometry-balanced-cases \
+  --validation-start 50 --validation-count 20 \
+  --holdout-start 100 --holdout-count 40 --max-steps 192 \
+  --winner artifacts/jepa/jepa-mpc-neat-committed-geometry-seed29.pkl \
+  --report artifacts/jepa/jepa-mpc-neat-committed-geometry-seed29.json
+```
+
+Train and evaluate the strict outcome-only control ablation:
+
+```bash
+python -m zima_py.train_jepa_outcome_value \
+  --checkpoint artifacts/jepa/temporal-rgb-s9n1-improved.pt \
+  --output artifacts/jepa/temporal-rgb-s9n1-outcome-value.pt \
+  --report artifacts/jepa/temporal-rgb-s9n1-outcome-value-training.json
+
+python -m zima_py.evaluate_jepa_outcome_value \
+  --value-checkpoint artifacts/jepa/temporal-rgb-s9n1-outcome-value.pt \
+  --holdout-start 100 --holdout-count 40 \
+  --report artifacts/jepa/jepa-outcome-value-test100-139.json
+```
+
+Train and evaluate the learned belief head:
+
+```bash
+uv run zima-jepa-belief-train
+uv run zima-rgb-neat --input-mode temporal-jepa \
+  --checkpoint artifacts/jepa/temporal-rgb-s9n1-improved.pt \
+  --belief-checkpoint artifacts/jepa/temporal-rgb-s9n1-belief-v2.pt \
+  --active-belief-lexicase
 ```
 
 See the [full experiment report](docs/temporal-jepa-neuroevolution-report.md)

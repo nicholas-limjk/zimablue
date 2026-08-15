@@ -1,0 +1,1442 @@
+{
+  "environment": "MiniGrid-LavaCrossingS9N1-v0",
+  "input_mode": "temporal-jepa",
+  "semantic_inputs": false,
+  "persistent_map": false,
+  "train_rgb_style": "standard",
+  "holdout_rgb_style": "standard",
+  "visual_feature_count": 128,
+  "controller_input_count": 139,
+  "controller": "recurrent",
+  "oracle_action_hint": true,
+  "seed": 19,
+  "generations": 20,
+  "population": 30,
+  "training_seed_pool": 50,
+  "cases_per_generation": 5,
+  "case_schedule": [
+    [
+      43,
+      2,
+      33,
+      7,
+      32
+    ],
+    [
+      29,
+      38,
+      25,
+      40,
+      16
+    ],
+    [
+      16,
+      35,
+      48,
+      3,
+      19
+    ],
+    [
+      1,
+      23,
+      6,
+      44,
+      9
+    ],
+    [
+      0,
+      34,
+      36,
+      2,
+      41
+    ],
+    [
+      27,
+      7,
+      46,
+      22,
+      8
+    ],
+    [
+      15,
+      39,
+      49,
+      8,
+      14
+    ],
+    [
+      33,
+      32,
+      14,
+      44,
+      43
+    ],
+    [
+      12,
+      38,
+      2,
+      24,
+      44
+    ],
+    [
+      2,
+      40,
+      16,
+      12,
+      18
+    ],
+    [
+      39,
+      29,
+      40,
+      30,
+      11
+    ],
+    [
+      1,
+      41,
+      39,
+      44,
+      29
+    ],
+    [
+      31,
+      41,
+      30,
+      34,
+      3
+    ],
+    [
+      2,
+      42,
+      9,
+      36,
+      23
+    ],
+    [
+      14,
+      0,
+      21,
+      42,
+      23
+    ],
+    [
+      47,
+      49,
+      37,
+      9,
+      25
+    ],
+    [
+      31,
+      9,
+      37,
+      46,
+      23
+    ],
+    [
+      43,
+      34,
+      20,
+      11,
+      1
+    ],
+    [
+      11,
+      15,
+      16,
+      12,
+      22
+    ],
+    [
+      4,
+      19,
+      43,
+      37,
+      5
+    ]
+  ],
+  "selection": "epsilon_lexicase",
+  "map_elites": true,
+  "map_elites_archive": [
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 5,
+        "exploration_bucket": 8,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 14.856250000000001,
+      "generation": 19
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 5,
+        "exploration_bucket": 7,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 14.842749999999999,
+      "generation": 18
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 5,
+        "exploration_bucket": 6,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 14.811200000000001,
+      "generation": 10
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 5,
+        "exploration_bucket": 5,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 14.79455,
+      "generation": 9
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 5,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 14.7634,
+      "generation": 5
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 5,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 14.748000000000001,
+      "generation": 16
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 5,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 14.7219,
+      "generation": 3
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 4,
+        "exploration_bucket": 7,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 9.85105,
+      "generation": 10
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 4,
+        "exploration_bucket": 6,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 9.753350000000001,
+      "generation": 14
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 4,
+        "exploration_bucket": 5,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 9.78875,
+      "generation": 7
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 4,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 9.80545,
+      "generation": 15
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 4,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 9.755149999999999,
+      "generation": 16
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 4,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 9.721649999999999,
+      "generation": 7
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 8,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 7.428400000000001,
+      "generation": 8
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 7,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 7.4364,
+      "generation": 8
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 6,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 6.791050000000001,
+      "generation": 11
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 6,
+        "low_blocked_seeds": 3
+      },
+      "fitness": 7.2737,
+      "generation": 12
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 5,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 7.291600000000001,
+      "generation": 14
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 7.32115,
+      "generation": 19
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 7.3123000000000005,
+      "generation": 15
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 7.2388,
+      "generation": 13
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 4
+      },
+      "fitness": 6.7974000000000006,
+      "generation": 3
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 3,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 3
+      },
+      "fitness": 7.00795,
+      "generation": 5
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 7,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.942,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 6,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.914899999999999,
+      "generation": 8
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 5,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.9314,
+      "generation": 8
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 5,
+        "low_blocked_seeds": 3
+      },
+      "fitness": 4.5567,
+      "generation": 3
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.8146,
+      "generation": 13
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 4
+      },
+      "fitness": 4.26695,
+      "generation": 12
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.773499999999999,
+      "generation": 19
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.81435,
+      "generation": 3
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 2
+      },
+      "fitness": 4.402100000000001,
+      "generation": 1
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 4.726399999999999,
+      "generation": 19
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 2,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 4
+      },
+      "fitness": 3.6059,
+      "generation": 1
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 7,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 2.4912,
+      "generation": 12
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 6,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 2.47945,
+      "generation": 15
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 5,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 2.4237,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 2.3778,
+      "generation": 14
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 2.3757,
+      "generation": 17
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 1
+      },
+      "fitness": 2.0079000000000002,
+      "generation": 6
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 2.3063,
+      "generation": 16
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 4
+      },
+      "fitness": 1.4859,
+      "generation": 1
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 2
+      },
+      "fitness": 1.9351000000000003,
+      "generation": 2
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 2.2828999999999997,
+      "generation": 4
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 3
+      },
+      "fitness": 1.5037000000000003,
+      "generation": 2
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 2
+      },
+      "fitness": 1.9279000000000006,
+      "generation": 2
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 1,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 2.2442999999999995,
+      "generation": 2
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 7,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 0.07075,
+      "generation": 19
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 5,
+        "low_blocked_seeds": 5
+      },
+      "fitness": 0.006999999999999996,
+      "generation": 9
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 4,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.01725,
+      "generation": 6
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 3,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.015000000000000001,
+      "generation": 10
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 2,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.11775,
+      "generation": 2
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.1565,
+      "generation": 6
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 4
+      },
+      "fitness": -0.377,
+      "generation": 10
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 3
+      },
+      "fitness": -1.8011,
+      "generation": 2
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 2
+      },
+      "fitness": -1.0215,
+      "generation": 15
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 1
+      },
+      "fitness": -0.45149999999999996,
+      "generation": 19
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 1,
+        "low_blocked_seeds": 0
+      },
+      "fitness": -2.40875,
+      "generation": 19
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 5
+      },
+      "fitness": -0.19875,
+      "generation": 19
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 1
+      },
+      "fitness": -2.3342500000000004,
+      "generation": 18
+    },
+    {
+      "descriptor": {
+        "seeds_collected": 0,
+        "seeds_opened": 0,
+        "seeds_solved": 0,
+        "exploration_bucket": 0,
+        "low_blocked_seeds": 0
+      },
+      "fitness": -0.6900000000000001,
+      "generation": 14
+    }
+  ],
+  "checkpoint": "C:\\Users\\nicho\\Documents\\zimablue\\artifacts\\jepa\\temporal-rgb-s9n1-improved.pt",
+  "context_length": 4,
+  "encoder_parameters": {
+    "context_encoder": 21400,
+    "predictor": 7008,
+    "total": 28408
+  },
+  "winner_source": "evolution_winner",
+  "winner_fitness": 14.846250000000001,
+  "winner_nodes": 7,
+  "winner_connections": 247,
+  "training_evaluation": {
+    "episodes": 10,
+    "solved": 10,
+    "success_rate": 1.0,
+    "mean_solved_steps": 50.5,
+    "runs": [
+      {
+        "seed": 0,
+        "solved": true,
+        "steps": 40,
+        "fitness": 10.27,
+        "unique_observations": 38,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 1,
+        "solved": true,
+        "steps": 59,
+        "fitness": 10.296,
+        "unique_observations": 45,
+        "unique_positions": 14,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 2,
+        "solved": true,
+        "steps": 45,
+        "fitness": 10.275,
+        "unique_observations": 40,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 3,
+        "solved": true,
+        "steps": 53,
+        "fitness": 10.287,
+        "unique_observations": 44,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 4,
+        "solved": true,
+        "steps": 51,
+        "fitness": 10.299,
+        "unique_observations": 44,
+        "unique_positions": 14,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 5,
+        "solved": true,
+        "steps": 56,
+        "fitness": 10.279,
+        "unique_observations": 43,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 6,
+        "solved": true,
+        "steps": 56,
+        "fitness": 10.259,
+        "unique_observations": 39,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 7,
+        "solved": true,
+        "steps": 56,
+        "fitness": 10.299,
+        "unique_observations": 47,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 8,
+        "solved": true,
+        "steps": 40,
+        "fitness": 10.27,
+        "unique_observations": 38,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 9,
+        "solved": true,
+        "steps": 49,
+        "fitness": 10.281,
+        "unique_observations": 42,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      }
+    ]
+  },
+  "standard_holdout_evaluation": {
+    "episodes": 20,
+    "solved": 20,
+    "success_rate": 1.0,
+    "mean_solved_steps": 49.9,
+    "runs": [
+      {
+        "seed": 50,
+        "solved": true,
+        "steps": 53,
+        "fitness": 10.287,
+        "unique_observations": 44,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 51,
+        "solved": true,
+        "steps": 43,
+        "fitness": 10.267,
+        "unique_observations": 38,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 52,
+        "solved": true,
+        "steps": 48,
+        "fitness": 10.277,
+        "unique_observations": 41,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 53,
+        "solved": true,
+        "steps": 59,
+        "fitness": 10.296,
+        "unique_observations": 45,
+        "unique_positions": 14,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 54,
+        "solved": true,
+        "steps": 51,
+        "fitness": 10.279,
+        "unique_observations": 42,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 55,
+        "solved": true,
+        "steps": 51,
+        "fitness": 10.279,
+        "unique_observations": 42,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 56,
+        "solved": true,
+        "steps": 52,
+        "fitness": 10.288,
+        "unique_observations": 44,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 57,
+        "solved": true,
+        "steps": 45,
+        "fitness": 10.275,
+        "unique_observations": 40,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 58,
+        "solved": true,
+        "steps": 53,
+        "fitness": 10.287,
+        "unique_observations": 44,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 59,
+        "solved": true,
+        "steps": 59,
+        "fitness": 10.301,
+        "unique_observations": 46,
+        "unique_positions": 14,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 60,
+        "solved": true,
+        "steps": 48,
+        "fitness": 10.277,
+        "unique_observations": 41,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 61,
+        "solved": true,
+        "steps": 51,
+        "fitness": 10.279,
+        "unique_observations": 42,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 62,
+        "solved": true,
+        "steps": 40,
+        "fitness": 10.27,
+        "unique_observations": 38,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 63,
+        "solved": true,
+        "steps": 40,
+        "fitness": 10.275,
+        "unique_observations": 39,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 64,
+        "solved": true,
+        "steps": 48,
+        "fitness": 10.272,
+        "unique_observations": 40,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 65,
+        "solved": true,
+        "steps": 56,
+        "fitness": 10.259,
+        "unique_observations": 39,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 66,
+        "solved": true,
+        "steps": 52,
+        "fitness": 10.288,
+        "unique_observations": 44,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 67,
+        "solved": true,
+        "steps": 48,
+        "fitness": 10.272,
+        "unique_observations": 40,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 68,
+        "solved": true,
+        "steps": 56,
+        "fitness": 10.299,
+        "unique_observations": 47,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 69,
+        "solved": true,
+        "steps": 45,
+        "fitness": 10.275,
+        "unique_observations": 40,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      }
+    ]
+  },
+  "holdout_evaluation": {
+    "episodes": 20,
+    "solved": 20,
+    "success_rate": 1.0,
+    "mean_solved_steps": 49.9,
+    "runs": [
+      {
+        "seed": 50,
+        "solved": true,
+        "steps": 53,
+        "fitness": 10.287,
+        "unique_observations": 44,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 51,
+        "solved": true,
+        "steps": 43,
+        "fitness": 10.267,
+        "unique_observations": 38,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 52,
+        "solved": true,
+        "steps": 48,
+        "fitness": 10.277,
+        "unique_observations": 41,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 53,
+        "solved": true,
+        "steps": 59,
+        "fitness": 10.296,
+        "unique_observations": 45,
+        "unique_positions": 14,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 54,
+        "solved": true,
+        "steps": 51,
+        "fitness": 10.279,
+        "unique_observations": 42,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 55,
+        "solved": true,
+        "steps": 51,
+        "fitness": 10.279,
+        "unique_observations": 42,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 56,
+        "solved": true,
+        "steps": 52,
+        "fitness": 10.288,
+        "unique_observations": 44,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 57,
+        "solved": true,
+        "steps": 45,
+        "fitness": 10.275,
+        "unique_observations": 40,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 58,
+        "solved": true,
+        "steps": 53,
+        "fitness": 10.287,
+        "unique_observations": 44,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 59,
+        "solved": true,
+        "steps": 59,
+        "fitness": 10.301,
+        "unique_observations": 46,
+        "unique_positions": 14,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 60,
+        "solved": true,
+        "steps": 48,
+        "fitness": 10.277,
+        "unique_observations": 41,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 61,
+        "solved": true,
+        "steps": 51,
+        "fitness": 10.279,
+        "unique_observations": 42,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 62,
+        "solved": true,
+        "steps": 40,
+        "fitness": 10.27,
+        "unique_observations": 38,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 63,
+        "solved": true,
+        "steps": 40,
+        "fitness": 10.275,
+        "unique_observations": 39,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 64,
+        "solved": true,
+        "steps": 48,
+        "fitness": 10.272,
+        "unique_observations": 40,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 65,
+        "solved": true,
+        "steps": 56,
+        "fitness": 10.259,
+        "unique_observations": 39,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 66,
+        "solved": true,
+        "steps": 52,
+        "fitness": 10.288,
+        "unique_observations": 44,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 67,
+        "solved": true,
+        "steps": 48,
+        "fitness": 10.272,
+        "unique_observations": 40,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 68,
+        "solved": true,
+        "steps": 56,
+        "fitness": 10.299,
+        "unique_observations": 47,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      },
+      {
+        "seed": 69,
+        "solved": true,
+        "steps": 45,
+        "fitness": 10.275,
+        "unique_observations": 40,
+        "unique_positions": 13,
+        "blocked_steps": 0,
+        "collected": false,
+        "opened_door": false
+      }
+    ]
+  },
+  "fitness_history": [
+    -0.10099999999999999,
+    14.72295,
+    14.734350000000001,
+    14.785300000000001,
+    14.846950000000001,
+    14.84835,
+    14.8442,
+    14.853799999999998,
+    14.855149999999998,
+    14.837349999999999,
+    14.8431,
+    14.849799999999998,
+    14.84525,
+    14.849499999999999,
+    14.8479,
+    14.8514,
+    14.852400000000001,
+    14.847049999999998,
+    14.842749999999999,
+    14.856250000000001
+  ],
+  "winner": "C:\\Users\\nicho\\Documents\\zimablue\\artifacts\\jepa\\diagnostic-oracle-seed19-winner.pkl"
+}
